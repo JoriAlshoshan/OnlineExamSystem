@@ -33,7 +33,7 @@ public class Exam
     public int DurationMinutes { get; set; }
 
     [ForeignKey("CreatedByUser")]
-    public int CreatedBy { get; set; }
+    public string CreatedBy { get; set; }
 
-    // public virtual User CreatedByUser { get; set; }
+    public virtual UsersApp CreatedByUser { get; set; }
 }

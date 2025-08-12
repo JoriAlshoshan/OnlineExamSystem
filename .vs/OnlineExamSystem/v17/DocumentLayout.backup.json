@@ -1,21 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Lamia\\OnlineExamSystem\\",
+  "WorkspaceRootPath": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lamia\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250812165039_AddUserAppTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineExamSystem\\Migrations\\20250812165039_AddUserAppTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\lamia\\onlineexamsystem\\onlineexamsystem\\data\\applicationdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\data\\applicationdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\lamia\\onlineexamsystem\\onlineexamsystem\\models\\usersapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\models\\usersapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\lamia\\onlineexamsystem\\onlineexamsystem\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
@@ -26,77 +18,41 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "20250812165039_AddUserAppTable.cs",
-              "DocumentMoniker": "C:\\Users\\Lamia\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250812165039_AddUserAppTable.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Migrations\\20250812165039_AddUserAppTable.cs",
-              "ToolTip": "C:\\Users\\Lamia\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250812165039_AddUserAppTable.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Migrations\\20250812165039_AddUserAppTable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAApAAAAAAAAAA==",
+              "Title": "Exam.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Models\\Exam.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Models\\Exam.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Models\\Exam.cs",
+              "RelativeToolTip": "OnlineExamSystem\\Models\\Exam.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwCMAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T16:50:40.155Z",
+              "WhenOpened": "2025-08-12T20:12:38.519Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ApplicationDbContext .cs",
-              "DocumentMoniker": "C:\\Users\\Lamia\\OnlineExamSystem\\OnlineExamSystem\\Data\\ApplicationDbContext .cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Data\\ApplicationDbContext .cs",
-              "ToolTip": "C:\\Users\\Lamia\\OnlineExamSystem\\OnlineExamSystem\\Data\\ApplicationDbContext .cs",
-              "RelativeToolTip": "OnlineExamSystem\\Data\\ApplicationDbContext .cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T16:49:37.427Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UsersApp.cs",
-              "DocumentMoniker": "C:\\Users\\Lamia\\OnlineExamSystem\\OnlineExamSystem\\Models\\UsersApp.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Models\\UsersApp.cs",
-              "ToolTip": "C:\\Users\\Lamia\\OnlineExamSystem\\OnlineExamSystem\\Models\\UsersApp.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Models\\UsersApp.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-12T16:47:51.658Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Lamia\\OnlineExamSystem\\OnlineExamSystem\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\appsettings.json",
               "RelativeDocumentMoniker": "OnlineExamSystem\\appsettings.json",
-              "ToolTip": "C:\\Users\\Lamia\\OnlineExamSystem\\OnlineExamSystem\\appsettings.json",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\appsettings.json",
               "RelativeToolTip": "OnlineExamSystem\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAACmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-12T16:44:26.548Z",
+              "WhenOpened": "2025-08-12T20:01:42.554Z",
               "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 12,
-          "SelectedChildIndex": -1,
-          "Children": [
+            },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         }
