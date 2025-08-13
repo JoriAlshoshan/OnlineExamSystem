@@ -1,10 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnlineExamSystem.Data;
 using OnlineExamSystem.Models;
+using OnlineExamSystem.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace OnlineExamSystem.Controllers
 {
+    [Authorize]
     public class ExamController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -14,103 +21,123 @@ namespace OnlineExamSystem.Controllers
             _context = context;
         }
 
-        // GET: Exam/EducatorPage
-        public async Task<IActionResult> EducatorPage()
+        [Authorize(Roles = "Student")]
+        public async Task<IActionResult> Index()
         {
+            var now = DateTime.UtcNow;
             var exams = await _context.Exams
+                .Where(e => e.StartTime <= now && e.EndTime >= now)
                 .Include(e => e.Subject)
-                .Include(e => e.CreatedByUser)
                 .ToListAsync();
             return View(exams);
         }
-        // GET: Exam/Create
-        public IActionResult Create()
+
+        [Authorize(Roles = "Student")]
+        public async Task<IActionResult> Take(int id)
         {
-            ViewBag.Subjects = _context.Subjects.ToList();
-            return View(new Exam());
-        }
-
-        // POST: Exam/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Exam exam)
-        {
-            ViewBag.Subjects = _context.Subjects.ToList(); // مهم جدًا
-
-            if (!ModelState.IsValid)
-            {
-                return View(exam);
-            }
-
-            exam.CreatedBy = User.Identity.Name;
-            _context.Exams.Add(exam);
-            await _context.SaveChangesAsync();
-
-            TempData["SuccessMessage"] = "Exam created successfully!";
-            return RedirectToAction("EducatorPage");
-        }
-
-        // GET: Exam/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null) return NotFound();
-
-            var exam = await _context.Exams.FindAsync(id);
-            if (exam == null) return NotFound();
-
-            ViewBag.Subjects = _context.Subjects.ToList();
-            return View(exam);
-        }
-
-        // POST: Exam/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Exam exam)
-        {
-            if (id != exam.ExamId) return NotFound();
-
-            if (ModelState.IsValid)
-            {
-                _context.Update(exam);
-                await _context.SaveChangesAsync();
-
-                TempData["SuccessMessage"] = "Exam updated successfully!";
-                return RedirectToAction("EducatorPage", "Exam");
-            }
-
-            ViewBag.Subjects = _context.Subjects.ToList();
-            return View(exam);
-        }
-
-        // GET: Exam/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null) return NotFound();
-
             var exam = await _context.Exams
                 .Include(e => e.Subject)
-                .FirstOrDefaultAsync(m => m.ExamId == id);
-
-            if (exam == null) return NotFound();
-
-            return View(exam);
-        }
-
-        // POST: Exam/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var exam = await _context.Exams.FindAsync(id);
-            if (exam != null)
+                .FirstOrDefaultAsync(e => e.ExamId == id);
+            if (exam == null)
             {
-                _context.Exams.Remove(exam);
-                await _context.SaveChangesAsync();
-
-                TempData["SuccessMessage"] = "Exam deleted successfully!";
+                return NotFound();
             }
 
-            return RedirectToAction("EducatorPage", "Exam");
+            var now = DateTime.UtcNow;
+            if (now < exam.StartTime || now > exam.EndTime)
+            {
+                return View("ExamNotAvailable", exam);
+            }
+
+            var questions = await _context.Questions
+                .Where(q => q.ExamId == id)
+                .ToListAsync();
+
+            var questionIds = questions.Select(q => q.QuestionId).ToList();
+            var options = await _context.Options
+                .Where(o => questionIds.Contains(o.QuestionId))
+                .ToListAsync();
+
+            var viewModel = new ExamViewModel
+            {
+                ExamId = exam.ExamId,
+                ExamTitle = exam.Title,
+                Questions = questions.Select(q => new QuestionViewModel
+                {
+                    QuestionId = q.QuestionId,
+                    QuestionText = q.QuestionText,
+                    QuestionType = q.QuestionType,
+                    Options = options.Where(o => o.QuestionId == q.QuestionId)
+                        .Select(o => new OptionViewModel
+                        {
+                            OptionId = o.OptionId,
+                            OptionText = o.OptionText
+                        }).ToList(),
+                    SelectedOptionId = null
+                }).ToList()
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Student")]
+        public async Task<IActionResult> Take(ExamViewModel model)
+        {
+            if (model == null || model.Questions == null)
+            {
+                return BadRequest();
+            }
+
+            int totalQuestions = model.Questions.Count;
+            int correctCount = 0;
+            var questionResults = new List<QuestionResultViewModel>(totalQuestions);
+
+            foreach (var question in model.Questions)
+            {
+                Option? selectedOption = null;
+                if (question.SelectedOptionId.HasValue)
+                {
+                    selectedOption = await _context.Options
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(o => o.OptionId == question.SelectedOptionId.Value);
+                }
+
+                var correctOption = await _context.Options
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(o => o.QuestionId == question.QuestionId && o.IsCorrect);
+
+                bool isCorrect = selectedOption != null && selectedOption.OptionId == correctOption?.OptionId;
+                if (isCorrect)
+                {
+                    correctCount++;
+                }
+
+                questionResults.Add(new QuestionResultViewModel
+                {
+                    QuestionText = question.QuestionText,
+                    SelectedOptionText = selectedOption?.OptionText,
+                    CorrectOptionText = correctOption?.OptionText,
+                    IsCorrect = isCorrect
+                });
+            }
+
+            double score = totalQuestions > 0
+                ? (double)correctCount / totalQuestions * 100.0
+                : 0.0;
+
+            var resultViewModel = new ExamResultViewModel
+            {
+                ExamId = model.ExamId,
+                ExamTitle = model.ExamTitle,
+                TotalQuestions = totalQuestions,
+                CorrectAnswers = correctCount,
+                Score = score,
+                QuestionResults = questionResults
+            };
+
+            return View("Result", resultViewModel);
         }
     }
 }
