@@ -1,0 +1,42 @@
+@model OnlineExamSystem.ViewModels.ExamResultViewModel
+
+@{
+    ViewData["Title"] = "Exam Result";
+}
+
+<h2 class="mt-4 mb-3">Result for @Model.ExamTitle</h2>
+
+<p><strong>Total Questions:</strong> @Model.TotalQuestions</p>
+<p><strong>Correct Answers:</strong> @Model.CorrectAnswers</p>
+<p><strong>Score:</strong> @Model.Score.ToString("0.##")%</p>
+
+<table class="table table-bordered table-striped mt-4">
+    <thead class="table-light">
+        <tr>
+            <th>Question</th>
+            <th>Your Answer</th>
+            <th>Correct Answer</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var q in Model.QuestionResults)
+    {
+        <tr>
+            <td>@q.QuestionText</td>
+            <td>@(string.IsNullOrWhiteSpace(q.SelectedOptionText) ? "—" : q.SelectedOptionText)</td>
+            <td>@(string.IsNullOrWhiteSpace(q.CorrectOptionText) ? "—" : q.CorrectOptionText)</td>
+            <td>
+                @if (q.IsCorrect)
+                {
+                    <span class="text-success">Correct</span>
+                }
+                else
+                {
+                    <span class="text-danger">Incorrect</span>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

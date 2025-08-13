@@ -1,0 +1,40 @@
+@model IEnumerable<OnlineExamSystem.Models.Exam>
+
+@{
+    ViewData["Title"] = "Available Exams";
+}
+
+<h2 class="mt-4 mb-3">Available Exams</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">There are no exams available at this time.</div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-light">
+            <tr>
+                <th>Title</th>
+                <th>Subject</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var exam in Model)
+        {
+            <tr>
+                <td>@exam.Title</td>
+                <td>@exam.Subject?.Name</td>
+                <td>@exam.StartTime.ToString("g")</td>
+                <td>@exam.EndTime.ToString("g")</td>
+                <td>
+                    <a asp-controller="Exam" asp-action="Take" asp-route-id="@exam.ExamId" class="btn btn-sm btn-primary">Take Exam</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
