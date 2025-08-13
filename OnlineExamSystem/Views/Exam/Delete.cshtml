@@ -1,0 +1,18 @@
+﻿@model OnlineExamSystem.Models.Exam
+
+@{
+    ViewData["Title"] = "Delete Exam";
+    Layout = "_Layout"; // تأكد من اسم الـ Layout الموحد
+}
+
+<h2>Delete Exam</h2>
+
+<div class="alert alert-warning">
+    Are you sure you want to delete the exam <strong>@Model.Title</strong>?
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="ExamId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="EducatorPage" asp-controller="Exam" class="btn btn-secondary">Cancel</a>
+</form>

@@ -1,0 +1,6 @@
+﻿@{
+    ViewData["Title"] = "Educator Page";
+
+    var userName = User.Identity?.Name ?? "User";
+    var isAuthenticated = User.Identity?.IsAuthenticated ?? false;
+}

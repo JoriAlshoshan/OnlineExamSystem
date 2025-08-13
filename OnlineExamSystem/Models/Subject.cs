@@ -1,14 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OnlineExamSystem.Models;
-
-public class Subject
+namespace OnlineExamSystem.Models
 {
-    [Key]
-    public int SubjectId { get; set; }
+    public class Subject
+    {
+        [Key]
+        public int SubjectId { get; set; }
 
-    [Required]
-    [MaxLength(100)]
-    public string Name { get; set; }
+        [Required, MaxLength(100)]
+        public string Name { get; set; }
+
+        // ✅ وصف اختياري للموضوع
+        public string Description { get; set; }
+    }
 }

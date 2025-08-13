@@ -4,7 +4,6 @@
 
 @{
     ViewData["Title"] = "Welcome";
-    Layout = "~/Views/Shared/_AccountLayout.cshtml";
 
     var userName = User.Identity?.Name ?? "User";
     var isAuthenticated = User.Identity?.IsAuthenticated ?? false;

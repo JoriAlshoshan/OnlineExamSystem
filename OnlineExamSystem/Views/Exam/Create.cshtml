@@ -1,0 +1,64 @@
+﻿@model OnlineExamSystem.Models.Exam
+
+@{
+    ViewData["Title"] = "Create Exam";
+    Layout = "_Layout";
+}
+
+<h2>Create Exam</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Description" class="form-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="SubjectId" class="form-label">Subject</label>
+        <select asp-for="SubjectId" class="form-select"
+                asp-items="@(ViewBag.Subjects != null ? new SelectList(ViewBag.Subjects, "SubjectId", "Name", Model.SubjectId) : Enumerable.Empty<SelectListItem>())">
+            <option value="">-- Select Subject --</option>
+        </select>
+        <span asp-validation-for="SubjectId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Difficulty" class="form-label"></label>
+        <input asp-for="Difficulty" class="form-control" />
+        <span asp-validation-for="Difficulty" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="StartTime" class="form-label"></label>
+        <input asp-for="StartTime" type="datetime-local" class="form-control"
+               value="@(Model.StartTime != DateTime.MinValue ? Model.StartTime.ToString("yyyy-MM-ddTHH:mm") : "")" />
+        <span asp-validation-for="StartTime" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="EndTime" class="form-label"></label>
+        <input asp-for="EndTime" type="datetime-local" class="form-control"
+               value="@(Model.EndTime != DateTime.MinValue ? Model.EndTime.ToString("yyyy-MM-ddTHH:mm") : "")" />
+        <span asp-validation-for="EndTime" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DurationMinutes" class="form-label"></label>
+        <input asp-for="DurationMinutes" type="number" class="form-control" />
+        <span asp-validation-for="DurationMinutes" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Create Exam</button>
+    <a asp-action="EducatorPage" asp-controller="Exam" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

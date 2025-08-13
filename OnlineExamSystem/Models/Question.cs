@@ -1,22 +1,32 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OnlineExamSystem.Models;
-
-public class Question
+namespace OnlineExamSystem.Models
 {
-    [Key]
-    public int QuestionId { get; set; }
+    public enum QuestionType
+    {
+        MultipleChoice,
+        TrueFalse,
+        ShortAnswer
+    }
 
-    [ForeignKey("Exam")]
-    public int ExamId { get; set; }
+    public class Question
+    {
+        [Key]
+        public int QuestionId { get; set; }
 
-    [Required]
-    public string QuestionText { get; set; }
+        [ForeignKey("Exam")]
+        public int ExamId { get; set; }
+        public virtual Exam Exam { get; set; }
 
-    [Required]
-    [MaxLength(50)]
-    public string QuestionType { get; set; } 
+        [Required]
+        public string QuestionText { get; set; }
 
-    public virtual Exam Exam { get; set; }
+        [Required]
+        public QuestionType QuestionType { get; set; }
+
+        // ✅ قائمة الخيارات
+        public virtual ICollection<Option> Options { get; set; } = new List<Option>();
+    }
 }

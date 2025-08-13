@@ -33,7 +33,7 @@ namespace OnlineExamSystem.Services
                 {
                     var adminUser = new UsersApp
                     {
-                        fullName = "System Admin",
+                        FullName = "System Admin",
                         UserName = adminEmail,
                         NormalizedUserName = adminEmail.ToUpper(),
                         Email = adminEmail,

@@ -5,24 +5,18 @@ using System.Diagnostics;
 
 namespace OnlineExamSystem.Controllers
 {
-    public class HomeController : Controller
+    public class RoleController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<RoleController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public RoleController(ILogger<RoleController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        
 
         [Authorize(Roles = "Admin")]
         public IActionResult AdminPage()
@@ -30,11 +24,11 @@ namespace OnlineExamSystem.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Educator")]
-        public IActionResult EducatorPage()
-        {
-            return View();
-        }
+        //[Authorize(Roles = "Educator")]
+        //public IActionResult EducatorPage()
+        //{
+        //    return View();
+        //}
 
         [Authorize(Roles = "Student")]
         public IActionResult StudentPage()
@@ -47,5 +41,6 @@ namespace OnlineExamSystem.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+        //here crud Operation 
     }
 }

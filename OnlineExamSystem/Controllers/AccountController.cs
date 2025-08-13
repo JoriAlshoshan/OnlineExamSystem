@@ -27,11 +27,11 @@ namespace OnlineExamSystem.Controllers
         }
 
 
-        [AllowAnonymous]
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
+        //[AllowAnonymous]
+        //public IActionResult AccessDenied()
+        //{
+        //    return View();
+        //}
         public IActionResult Welcome()
         {
             return View();
@@ -105,7 +105,7 @@ namespace OnlineExamSystem.Controllers
 
             var user = new UsersApp
             {
-                fullName = model.Name,
+                FullName = model.Name,
                 UserName = model.Email,
                 NormalizedUserName = model.Email.ToUpper(),
                 Email = model.Email,
