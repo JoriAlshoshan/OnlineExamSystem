@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineExamSystem.Models;
 using System.Diagnostics;
@@ -19,6 +20,24 @@ namespace OnlineExamSystem.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult AdminPage()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Educator")]
+        public IActionResult EducatorPage()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Student")]
+        public IActionResult StudentPage()
         {
             return View();
         }

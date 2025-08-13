@@ -1,0 +1,292 @@
+.account-container {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 20px;
+    background: linear-gradient(135deg, #f0faf1, #e7f0e9);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.account-box {
+    background-color: #fff;
+    border-radius: 14px;
+    padding: 50px 40px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    text-align: left;
+}
+
+    .account-box:hover {
+        box-shadow: 0 24px 55px rgba(0, 0, 0, 0.15);
+    }
+
+.account-title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #2e7d32;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1.5px solid #b0bfc6;
+    padding: 14px 16px;
+    font-size: 1.05rem;
+    transition: border-color 0.3s ease;
+    box-shadow: none;
+}
+
+    .form-control:focus {
+        border-color: #4caf50;
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+        outline: none;
+    }
+
+.btn-primary {
+    background-color: #4caf50;
+    border: none;
+    font-weight: 700;
+    font-size: 1.25rem;
+    border-radius: 40px;
+    padding: 14px 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+    cursor: pointer;
+}
+
+    .btn-primary:hover,
+    .btn-primary:focus {
+        background-color: #388e3c;
+        box-shadow: 0 10px 25px rgba(56, 142, 60, 0.6);
+        transform: translateY(-2px);
+    }
+
+.btn-success {
+    background-color: #43a047;
+    border: none;
+    font-weight: 700;
+    font-size: 1.25rem;
+    border-radius: 40px;
+    padding: 14px 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(67, 160, 71, 0.4);
+    cursor: pointer;
+}
+
+    .btn-success:hover,
+    .btn-success:focus {
+        background-color: #2e7d32;
+        box-shadow: 0 10px 25px rgba(46, 125, 50, 0.6);
+        transform: translateY(-2px);
+    }
+
+.text-danger {
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+.link-primary {
+    color: #4caf50;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .link-primary:hover,
+    .link-primary:focus {
+        color: #388e3c;
+        text-decoration: underline;
+    }
+
+.link-muted {
+    color: #999;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .link-muted:hover,
+    .link-muted:focus {
+        color: #666;
+        text-decoration: underline;
+    }
+
+.forgot-link {
+    font-size: 0.9rem;
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+    .forgot-link:hover,
+    .forgot-link:focus {
+        color: #388e3c;
+        text-decoration: underline;
+    }
+
+.form-check-label {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.alert-info {
+    background-color: #e6f2ea;
+    color: #2e7d32;
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 12px 20px;
+    margin-bottom: 25px;
+}
+
+
+.welcome-container {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 60px;
+    background: linear-gradient(135deg, #d0f0d6, #e8f5e9);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.welcome-box {
+    background-color: #ffffff;
+    padding: 80px 70px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(46, 125, 50, 0.2);
+    max-width: 520px;
+    width: 100%;
+}
+
+.welcome-title {
+    font-size: 2.2rem;
+    color: #2e7d32;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.welcome-subtitle {
+    font-size: 1.35rem;
+    color: #4caf50;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+    .btn-group .btn-primary {
+        background-color: #4caf50;
+        padding: 16px 42px;
+        font-size: 1.3rem;
+        border-radius: 40px;
+        box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+        transition: all 0.3s ease;
+    }
+
+        .btn-group .btn-primary:hover {
+            background-color: #388e3c;
+            box-shadow: 0 12px 30px rgba(56, 142, 60, 0.6);
+            transform: translateY(-2px);
+        }
+
+    .btn-group .btn-outline-primary {
+        border: 2.5px solid #4caf50;
+        color: #4caf50;
+        background: transparent;
+        padding: 16px 42px;
+        font-size: 1.3rem;
+        border-radius: 40px;
+        transition: all 0.3s ease;
+        box-shadow: none;
+    }
+
+        .btn-group .btn-outline-primary:hover {
+            background-color: #4caf50;
+            color: white;
+            box-shadow: 0 12px 30px rgba(76, 175, 80, 0.6);
+            transform: translateY(-2px);
+        }
+
+.text-success {
+    font-weight: 700;
+    font-size: 1.15rem;
+    margin-top: 25px;
+    color: #388e3c !important;
+}
+
+@media (max-width: 576px) {
+    .account-box, .welcome-box {
+        padding: 30px 20px;
+    }
+
+    .account-title {
+        font-size: 2rem;
+    }
+
+    .btn-primary, .btn-success {
+        font-size: 1.1rem;
+        padding: 12px 0;
+    }
+
+    .welcome-title {
+        font-size: 2.2rem;
+    }
+
+    .btn-group .btn-primary, .btn-group .btn-outline-primary {
+        font-size: 1.1rem;
+        padding: 14px 32px;
+    }
+
+    .navbar {
+        box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15);
+    }
+
+        .navbar .nav-link.active {
+            color: #2e7d32 !important;
+            font-weight: 700;
+            border-bottom: 3px solid #2e7d32;
+            padding-bottom: 6px;
+            background-color: rgba(76, 175, 80, 0.1);
+            border-radius: 6px;
+        }
+
+        .navbar .nav-link:hover,
+        .navbar .nav-link:focus {
+            color: #4caf50;
+            text-decoration: underline;
+        }
+
+        .navbar .nav-link.active {
+            color: #2e7d32;
+            font-weight: 700;
+        }
+
+    .navbar-brand span {
+        letter-spacing: 1.3px;
+    }
+
+    footer {
+        font-size: 0.9rem;
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+}
