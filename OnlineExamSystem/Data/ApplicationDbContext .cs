@@ -20,18 +20,15 @@ namespace OnlineExamSystem.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // تخصيص أسماء الجداول (schema: exam)
             modelBuilder.Entity<Exam>().ToTable("Exams", "exam");
             modelBuilder.Entity<Question>().ToTable("Questions", "exam");
             modelBuilder.Entity<Option>().ToTable("Options", "exam");
             modelBuilder.Entity<Subject>().ToTable("Subjects", "exam");
 
-            // ✅ لضمان حفظ enum كـ string بدل int
             modelBuilder.Entity<Question>()
                 .Property(q => q.QuestionType)
                 .HasConversion<string>();
 
-            // ✅ تحديد العلاقات
             modelBuilder.Entity<Exam>()
                 .HasMany(e => e.Questions)
                 .WithOne(q => q.Exam)
