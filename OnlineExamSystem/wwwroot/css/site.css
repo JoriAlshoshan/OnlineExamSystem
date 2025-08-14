@@ -1,22 +1,125 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+:root {
+    --green-dark: #1b5e20;
+    --green-main: #2e7d32;
+    --green-light: #a5d6a7;
+    --green-lighter: #e8f5e9;
+    --red-danger: #d32f2f;
+    --text-dark: #263238;
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--green-lighter);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-box {
+    margin: 0 auto 30px auto;
+    max-width: 900px;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+
+
+
+h1, h2, h3, h4 {
+    color: var(--green-main);
+    font-weight: bold;
+}
+
+hr {
+    border-top: 2px solid var(--green-light);
+}
+
+.btn {
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.btn-main {
+    background-color: var(--green-main);
+    color: white;
+    border: none;
+}
+
+    .btn-main:hover {
+        background-color: var(--green-dark);
+    }
+
+.btn-outline-main {
+    border: 2px solid var(--green-main);
+    color: var(--green-main);
+    background-color: transparent;
+}
+
+    .btn-outline-main:hover {
+        background-color: var(--green-main);
+        color: white;
+    }
+
+.btn-danger {
+    background-color: var(--red-danger);
+    color: #fff;
+}
+
+    .btn-danger:hover {
+        background-color: darkred;
+    }
+
+.table-green thead {
+    background-color: #d1e7dd;
+    color: #155724;
+}
+
+.btn-primary {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+    .btn-primary:hover {
+        background-color: #157347;
+        border-color: #157347;
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+    .btn-danger:hover {
+        background-color: #bb2d3b;
+        border-color: #b02a37;
+    }
+
+.nowrap-cell {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 220px;
 }

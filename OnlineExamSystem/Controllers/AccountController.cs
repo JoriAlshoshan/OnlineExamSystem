@@ -34,19 +34,19 @@ namespace OnlineExamSystem.Controllers
         //}
         public IActionResult Welcome()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                if (User.IsInRole("Admin"))
-                {
-                    return RedirectToAction("AdminPage", "Home");
+              if (User.Identity.IsAuthenticated)
+               {
+                   if (User.IsInRole("Admin"))
+                   {
+                    return RedirectToAction("AdminPage", "Role");
                 }
                 else if (User.IsInRole("Educator"))
-                {
-                    return RedirectToAction("EducatorPage", "Exam");
-                }
-                else if (User.IsInRole("Student"))
-                {
-                    return RedirectToAction("StudentPage", "Home");
+                   {
+                       return RedirectToAction("EducatorPage", "Exam");
+                   }
+                   else if (User.IsInRole("Student"))
+                   {
+                    return RedirectToAction("StudentPage", "Role");
                 }
             }
             return View();
@@ -87,11 +87,11 @@ namespace OnlineExamSystem.Controllers
                 }
                 else if (roles.Contains(UserRoles.Admin.ToString()))
                 {
-                    return RedirectToAction("AdminPage", "Home");
+                    return RedirectToAction("AdminPage", "Role");
                 }
                 else if (roles.Contains(UserRoles.Student.ToString()))
                 {
-                    return RedirectToAction("StudentPage", "Home");
+                    return RedirectToAction("StudentPage", "Role");
                 }
 
 
