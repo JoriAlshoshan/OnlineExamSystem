@@ -8,8 +8,10 @@ namespace OnlineExamSystem.Models
         [Key]
         public int OptionId { get; set; }
 
+        [Required]
         [ForeignKey("Question")]
         public int QuestionId { get; set; }
+
         public virtual Question Question { get; set; }
 
         [Required]

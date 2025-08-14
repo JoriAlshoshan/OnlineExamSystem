@@ -16,8 +16,10 @@ namespace OnlineExamSystem.Models
         [Key]
         public int QuestionId { get; set; }
 
+        [Required]
         [ForeignKey("Exam")]
         public int ExamId { get; set; }
+
         public virtual Exam Exam { get; set; }
 
         [Required]
@@ -26,7 +28,6 @@ namespace OnlineExamSystem.Models
         [Required]
         public QuestionType QuestionType { get; set; }
 
-        // ✅ قائمة الخيارات
         public virtual ICollection<Option> Options { get; set; } = new List<Option>();
     }
 }

@@ -5,10 +5,18 @@
     Layout = "_Layout";
 }
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Exams</h2>
-    <a class="btn btn-success" asp-controller="Exam" asp-action="Create">Create New Exam</a>
-</div>
+<h2>Educator Page</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Exam</a>
+</p>
 
 <table class="table table-striped table-bordered">
     <thead class="table-dark">
@@ -24,20 +32,29 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var exam in Model)
+        @if (Model != null && Model.Any())
+        {
+            foreach (var exam in Model)
+            {
+                <tr>
+                    <td>@exam.Title</td>
+                    <td>@exam.Subject?.Name</td>
+                    <td>@exam.Difficulty</td>
+                    <td>@exam.StartTime.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@exam.EndTime.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>@exam.DurationMinutes</td>
+                    <td>@exam.CreatedByUser?.FullName</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@exam.ExamId" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@exam.ExamId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>@exam.Title</td>
-                <td>@exam.Subject?.Name</td>
-                <td>@exam.Difficulty</td>
-                <td>@exam.StartTime.ToString("g")</td>
-                <td>@exam.EndTime.ToString("g")</td>
-                <td>@exam.DurationMinutes</td>
-                <td>@exam.CreatedByUser?.UserName</td>
-                <td>
-                    <a class="btn btn-primary btn-sm" asp-controller="Exam" asp-action="Edit" asp-route-id="@exam.ExamId">Edit</a>
-                    <a class="btn btn-danger btn-sm" asp-controller="Exam" asp-action="Delete" asp-route-id="@exam.ExamId">Delete</a>
-                </td>
+                <td colspan="8" class="text-center">No exams found.</td>
             </tr>
         }
     </tbody>

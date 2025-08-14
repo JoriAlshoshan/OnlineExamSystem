@@ -68,7 +68,7 @@ namespace OnlineExamSystem.Controllers
 
                 if (roles.Contains(UserRoles.Educator.ToString()))
                 {
-                    return RedirectToAction("EducatorPage", "Home");
+                    return RedirectToAction("EducatorPage", "Exam");
                 }
                 else if (roles.Contains(UserRoles.Admin.ToString()))
                 {

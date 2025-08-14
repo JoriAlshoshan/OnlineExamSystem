@@ -10,7 +10,6 @@ namespace OnlineExamSystem.Models
         [Required, MaxLength(100)]
         public string Name { get; set; }
 
-        // ✅ وصف اختياري للموضوع
         public string Description { get; set; }
     }
 }

@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
-namespace OnlineExamSystem.Models
+namespace OnlineExamSystem.Models;
+
+public class UsersApp : IdentityUser
 {
-    public class UsersApp : IdentityUser
-    {
-        public string FullName { get; set; }
-
-        // ✅ دور المستخدم (يمكن استخدام IdentityRole أيضاً)
-        public string Role { get; set; }
-    }
+    public string FullName { get; set; }
+    public string? Role { get; set; } 
 }
