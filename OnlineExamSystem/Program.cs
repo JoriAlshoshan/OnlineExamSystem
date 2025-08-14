@@ -41,6 +41,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Exam}/{action=EducatorPage}/{id?}");
+    pattern: "{controller=Account}/{action=Welcome}/{id?}");
 
 app.Run();

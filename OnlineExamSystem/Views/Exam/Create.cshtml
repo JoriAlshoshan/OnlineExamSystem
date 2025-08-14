@@ -1,4 +1,4 @@
-﻿@model OnlineExamSystem.Models.Exam
+@model OnlineExamSystem.Models.Exam
 
 @{
     ViewData["Title"] = "Create Exam";
@@ -28,7 +28,6 @@
                 asp-items="@(ViewBag.Subjects != null ? new SelectList(ViewBag.Subjects, "SubjectId", "Name", Model.SubjectId) : new List<SelectListItem>())">
             <option value="">-- Select Subject --</option>
         </select>
-
         <span asp-validation-for="SubjectId" class="text-danger"></span>
     </div>
 
@@ -41,14 +40,14 @@
     <div class="mb-3">
         <label asp-for="StartTime" class="form-label"></label>
         <input asp-for="StartTime" type="datetime-local" class="form-control"
-               value="@(Model.StartTime != DateTime.MinValue ? Model.StartTime.ToString("yyyy-MM-ddTHH:mm") : DateTime.Now.ToString("yyyy-MM-ddTHH:mm"))" />
+               value="@(Model.StartTime.Year >= 1900 && Model.StartTime.Year <= 2077 ? Model.StartTime.ToString("yyyy-MM-ddTHH:mm") : DateTime.Now.ToString("yyyy-MM-ddTHH:mm"))" />
         <span asp-validation-for="StartTime" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
         <label asp-for="EndTime" class="form-label"></label>
         <input asp-for="EndTime" type="datetime-local" class="form-control"
-               value="@(Model.EndTime != DateTime.MinValue ? Model.EndTime.ToString("yyyy-MM-ddTHH:mm") : DateTime.Now.AddHours(1).ToString("yyyy-MM-ddTHH:mm"))" />
+               value="@(Model.EndTime.Year >= 1900 && Model.EndTime.Year <= 2077 ? Model.EndTime.ToString("yyyy-MM-ddTHH:mm") : DateTime.Now.AddHours(1).ToString("yyyy-MM-ddTHH:mm"))" />
         <span asp-validation-for="EndTime" class="text-danger"></span>
     </div>
 

@@ -149,7 +149,8 @@ namespace OnlineExamSystem.Controllers
             return View(new Exam());
         }
 
-        [HttpPost]
+
+       [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Exam exam)
         {

@@ -34,6 +34,21 @@ namespace OnlineExamSystem.Controllers
         //}
         public IActionResult Welcome()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (User.IsInRole("Admin"))
+                {
+                    return RedirectToAction("AdminPage", "Home");
+                }
+                else if (User.IsInRole("Educator"))
+                {
+                    return RedirectToAction("EducatorPage", "Exam");
+                }
+                else if (User.IsInRole("Student"))
+                {
+                    return RedirectToAction("StudentPage", "Home");
+                }
+            }
             return View();
         }
 
