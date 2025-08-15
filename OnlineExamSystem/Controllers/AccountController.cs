@@ -131,8 +131,41 @@ namespace OnlineExamSystem.Controllers
 
             if (result.Succeeded)
             {
-                var emailPrefix = model.Email.Split('@')[0];
+                var emailDomain = model.Email.Split('@')[1].ToLower();
 
+                var universityDomains = new Dictionary<string, string>
+{
+                        { "ksu.edu.sa", "King Saud University" },
+                        { "kau.edu.sa", "King Abdulaziz University" },
+                        { "kfu.edu.sa", "King Faisal University" },
+                        { "uqu.edu.sa", "Um Al-Qura University" },
+                        { "qu.edu.sa", "Qassim University" },
+                        { "imamu.edu.sa", "Imam Muhammad bin Saud University" },
+                        { "psu.edu.sa", "Prince Sultan University" },
+                        { "twu.edu.sa", "Taif University" },
+                        { "pnu.edu.sa", "Princess Nourah University" },
+                        { "kku.edu.sa", "King Khalid University" },
+                        { "saudigov.edu.sa", "Saudi Government Universities" },
+                        { "najah.edu.sa", "Najran University" },
+                        { "ju.edu.sa", "Jazan University" },
+                        { "mu.edu.sa", "Makkah University" },
+                        { "shms.edu.sa", "Shaqra University" },
+                        { "u.edu.sa", "University of Dammam" },
+                        { "huf.edu.sa", "Hail University" }
+};
+
+
+                string university = universityDomains
+                    .FirstOrDefault(x => emailDomain.EndsWith(x.Key)).Value;
+
+                if (university == null)
+                {
+                    university = "Unknown University";
+                }
+
+                user.University = university;
+
+                var emailPrefix = model.Email.Split('@')[0];
                 UserRoles assignedRole;
 
                 if (emailPrefix.EndsWith(".Ad", StringComparison.OrdinalIgnoreCase))
@@ -163,6 +196,7 @@ namespace OnlineExamSystem.Controllers
                 await userManager.AddToRoleAsync(user, roleName);
 
                 await signInManager.SignInAsync(user, isPersistent: false);
+
                 return RedirectToAction("Login", "Account");
             }
 
@@ -173,6 +207,7 @@ namespace OnlineExamSystem.Controllers
 
             return View(model);
         }
+
 
 
         [HttpGet]
