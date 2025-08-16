@@ -6,7 +6,7 @@ using OnlineExamSystem.ViewModels;
 
 namespace OnlineExamSystem.Controllers
 {
-    [Authorize(Roles = "Student")]
+   
     public class StudentController : Controller
     {
 
@@ -83,6 +83,8 @@ namespace OnlineExamSystem.Controllers
             return RedirectToAction("AttendExam");
         }
 
+        //[Authorize(Roles = "Teacher")]
+
         public IActionResult Result(string studentId)
         {
             var model = _studentService.GetExamResults(Convert.ToInt32(studentId)); 
@@ -90,6 +92,7 @@ namespace OnlineExamSystem.Controllers
 
         }
 
+        //[Authorize(Roles = "Student")]
         public IActionResult ViewResult()
         {
             LoginViewModel seesionObj = HttpContext.Session.Get<LoginViewModel>("loginvm");

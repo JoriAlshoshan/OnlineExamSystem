@@ -1,0 +1,49 @@
+﻿@model OnlineExamSystem.ViewModels.AttendExamViewModel
+
+@{
+    ViewData["Title"] = "AttendExam";
+}
+
+<h1>@Model.ExamName</h1>
+
+<h3>Exam Paper</h3>
+
+@if (string.IsNullOrEmpty(Model.Message))
+{
+    <form asp-action="AttendExam" asp-controller="Students" method="post">
+        <input type="hidden" asp-for="StudentId" />
+
+        <ul>
+            @for (var i = 0; i < Model.QnA.Count(); i++)
+            {
+                <input type="hidden" asp-for="@Model.QnA[i].Id" />
+                <input type="hidden" asp-for="@Model.QnA[i].ExamId" />
+
+                <li>
+                    <label for="@Model.QnA[i].Question">@Model.QnA[i].Question</label>
+                </li>
+                <li>
+                    <select asp-for="@Model.QnA[i].SelectedAnswar" class="form-control">
+                        <option value="1">@Model.QnA[i].option1</option>
+                        <option value="2">@Model.QnA[i].option2</option>
+                        <option value="3">@Model.QnA[i].option3</option>
+                        <option value="4">@Model.QnA[i].option4</option>
+                    </select>
+                </li>
+            }
+        </ul>
+
+        <button type="submit" name="action" class="btn btn-primary">Submit</button>
+    </form>
+}
+else
+{
+    <p style="font-size: 30px; color: red; text-align: center;">
+        @Model.Message
+    </p>
+}
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
