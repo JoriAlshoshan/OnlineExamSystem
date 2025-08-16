@@ -3,136 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\controllers\\examcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\controllers\\examcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\exam\\educatorpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\exam\\educatorpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\viewmodels\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\viewmodels\\pagedresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\exam\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\exam\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250816012557_FixGroupUserIdTypeAgain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineExamSystem\\Migrations\\20250816012557_FixGroupUserIdTypeAgain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\repository\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\repository\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\exam\\take.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\exam\\take.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\models\\usersapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\models\\usersapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\models\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\models\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\.gitignore||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\.gitignore||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\onlineexamsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\onlineexamsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\exam\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\exam\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\role\\adminpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\role\\adminpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250814003244_FixCreatedByColumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineExamSystem\\Migrations\\20250814003244_FixCreatedByColumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\models\\exam.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\account\\welcome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\account\\welcome.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250814000942_MakeUserRoleNullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineExamSystem\\Migrations\\20250814000942_MakeUserRoleNullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\exam\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\exam\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250813234157_UpdateExamModelsAgain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineExamSystem\\Migrations\\20250813234157_UpdateExamModelsAgain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\viewmodels\\userviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\viewmodels\\userviewmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\data\\applicationdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\data\\applicationdbcontext .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250813233449_UpdateExamModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineExamSystem\\Migrations\\20250813233449_UpdateExamModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\models\\usersapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\models\\usersapp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\models\\option.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\models\\option.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250816011411_FixGroupUserIdTypeAgaina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineExamSystem\\Migrations\\20250816011411_FixGroupUserIdTypeAgaina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250816011145_FixGroupUserIdTypeAgain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineExamSystem\\Migrations\\20250816011145_FixGroupUserIdTypeAgain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\services\\seedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\services\\seedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250813201944_UpdateDataBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineExamSystem\\Migrations\\20250813201944_UpdateDataBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\account\\verifyemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\account\\verifyemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\account\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\account\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -142,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -154,93 +74,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Program.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Program.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Program.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Program.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAowCsAAAA+AAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "PagedResult.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\ViewModels\\PagedResult.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\ViewModels\\PagedResult.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\ViewModels\\PagedResult.cs",
+              "RelativeToolTip": "OnlineExamSystem\\ViewModels\\PagedResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T15:49:05.087Z",
+              "WhenOpened": "2025-08-16T01:32:46.638Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAKYAAAAAAAAAAAAwwEYAAAA5AAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "ApplicationDbContext .cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Data\\ApplicationDbContext .cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Data\\ApplicationDbContext .cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Data\\ApplicationDbContext .cs",
+              "RelativeToolTip": "OnlineExamSystem\\Data\\ApplicationDbContext .cs",
+              "ViewState": "AgIAABEAAAAAAAAAAIAywBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T20:19:21.287Z",
+              "WhenOpened": "2025-08-16T01:13:38.408Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ExamController.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\ExamController.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Controllers\\ExamController.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\ExamController.cs*",
-              "RelativeToolTip": "OnlineExamSystem\\Controllers\\ExamController.cs*",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAlwI4AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "20250816011145_FixGroupUserIdTypeAgain.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250816011145_FixGroupUserIdTypeAgain.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Migrations\\20250816011145_FixGroupUserIdTypeAgain.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250816011145_FixGroupUserIdTypeAgain.cs",
+              "RelativeToolTip": "OnlineExamSystem\\Migrations\\20250816011145_FixGroupUserIdTypeAgain.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T20:21:56.644Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T17:17:36.918Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\appsettings.json",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\appsettings.json",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\appsettings.json",
-              "RelativeToolTip": "OnlineExamSystem\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-08-13T16:06:44.194Z",
+              "WhenOpened": "2025-08-16T01:11:45.688Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Exam\\Create.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Exam\\Create.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Exam\\Create.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Exam\\Create.cshtml",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAowB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T20:23:33.977Z",
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "OnlineExamSystem\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T00:55:44.096Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "EducatorPage.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Exam\\EducatorPage.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Exam\\EducatorPage.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Exam\\EducatorPage.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Exam\\EducatorPage.cshtml",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAAMAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T16:20:47.604Z",
+              "DocumentIndex": 5,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Repository\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Repository\\GenericRepository.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Repository\\GenericRepository.cs",
+              "RelativeToolTip": "OnlineExamSystem\\Repository\\GenericRepository.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAewBcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T01:25:16.161Z",
               "EditorCaption": ""
             },
             {
@@ -251,334 +145,100 @@
               "RelativeDocumentMoniker": "OnlineExamSystem\\Models\\UsersApp.cs",
               "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Models\\UsersApp.cs",
               "RelativeToolTip": "OnlineExamSystem\\Models\\UsersApp.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAUwAsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T19:59:18.9Z",
+              "WhenOpened": "2025-08-16T01:10:01.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Users\\Index.cshtml",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Users\\Index.cshtml",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Users\\Index.cshtml",
+              "RelativeToolTip": "OnlineExamSystem\\Views\\Users\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-08-16T00:57:32.059Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "Subject.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Models\\Subject.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Models\\Subject.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Models\\Subject.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Models\\Subject.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Title": "20250816011411_FixGroupUserIdTypeAgaina.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250816011411_FixGroupUserIdTypeAgaina.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Migrations\\20250816011411_FixGroupUserIdTypeAgaina.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250816011411_FixGroupUserIdTypeAgaina.cs",
+              "RelativeToolTip": "OnlineExamSystem\\Migrations\\20250816011411_FixGroupUserIdTypeAgaina.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T19:59:11.222Z",
+              "WhenOpened": "2025-08-16T01:14:11.886Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\.gitignore",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\.gitignore",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\.gitignore",
-              "RelativeToolTip": "OnlineExamSystem\\.gitignore",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-08-14T01:17:04.561Z",
+              "DocumentIndex": 4,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Services\\AccountService.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Services\\AccountService.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Services\\AccountService.cs",
+              "RelativeToolTip": "OnlineExamSystem\\Services\\AccountService.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAMwFIAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T01:17:40.697Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Take.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Exam\\Take.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Exam\\Take.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Exam\\Take.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Exam\\Take.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-14T01:21:07.006Z",
+              "DocumentIndex": 3,
+              "Title": "20250816012557_FixGroupUserIdTypeAgain.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250816012557_FixGroupUserIdTypeAgain.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Migrations\\20250816012557_FixGroupUserIdTypeAgain.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250816012557_FixGroupUserIdTypeAgain.cs",
+              "RelativeToolTip": "OnlineExamSystem\\Migrations\\20250816012557_FixGroupUserIdTypeAgain.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T01:25:57.334Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "OnlineExamSystem",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\OnlineExamSystem.csproj",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\OnlineExamSystem.csproj",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\OnlineExamSystem.csproj",
-              "RelativeToolTip": "OnlineExamSystem\\OnlineExamSystem.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-08-14T01:16:52.083Z",
+              "DocumentIndex": 6,
+              "Title": "UserViewModels.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\ViewModels\\UserViewModels.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\ViewModels\\UserViewModels.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\ViewModels\\UserViewModels.cs",
+              "RelativeToolTip": "OnlineExamSystem\\ViewModels\\UserViewModels.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAMwA4AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T01:17:47.268Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Exam\\Delete.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Exam\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Exam\\Delete.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Exam\\Delete.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T20:24:43.856Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "AdminPage.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Role\\AdminPage.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Role\\AdminPage.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Role\\AdminPage.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Role\\AdminPage.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T19:06:10.154Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "20250813233449_UpdateExamModels.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250813233449_UpdateExamModels.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Migrations\\20250813233449_UpdateExamModels.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250813233449_UpdateExamModels.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Migrations\\20250813233449_UpdateExamModels.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "OnlineExamSystem\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T23:34:50.148Z",
+              "WhenOpened": "2025-08-16T01:06:01.565Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "Welcome.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\Welcome.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Account\\Welcome.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\Welcome.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Account\\Welcome.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T19:05:14.565Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Exam.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Models\\Exam.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Models\\Exam.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Models\\Exam.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Models\\Exam.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAA8wDAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Program.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Program.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Program.cs",
+              "RelativeToolTip": "OnlineExamSystem\\Program.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAADQAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T19:58:29.874Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "20250814000942_MakeUserRoleNullable.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250814000942_MakeUserRoleNullable.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Migrations\\20250814000942_MakeUserRoleNullable.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250814000942_MakeUserRoleNullable.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Migrations\\20250814000942_MakeUserRoleNullable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T00:09:42.295Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "20250814003244_FixCreatedByColumn.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250814003244_FixCreatedByColumn.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Migrations\\20250814003244_FixCreatedByColumn.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250814003244_FixCreatedByColumn.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Migrations\\20250814003244_FixCreatedByColumn.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-14T00:32:44.648Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Account\\Login.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T19:04:41.22Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Question.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Models\\Question.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Models\\Question.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Models\\Question.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Models\\Question.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwCEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T19:58:52.21Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Option.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Models\\Option.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Models\\Option.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Models\\Option.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Models\\Option.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T19:59:02.821Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Exam\\Edit.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Exam\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Exam\\Edit.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Exam\\Edit.cshtml",
-              "ViewState": "AgIAABwAAAAAAAAAAAAowC4AAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T20:24:20.244Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "20250813234157_UpdateExamModelsAgain.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250813234157_UpdateExamModelsAgain.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Migrations\\20250813234157_UpdateExamModelsAgain.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250813234157_UpdateExamModelsAgain.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Migrations\\20250813234157_UpdateExamModelsAgain.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T23:41:57.194Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "ApplicationDbContext .cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Data\\ApplicationDbContext .cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Data\\ApplicationDbContext .cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Data\\ApplicationDbContext .cs",
-              "RelativeToolTip": "OnlineExamSystem\\Data\\ApplicationDbContext .cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwDAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T19:59:29.409Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "SeedService.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Services\\SeedService.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Services\\SeedService.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Services\\SeedService.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Services\\SeedService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAIA9wCMAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T20:18:52.085Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "20250813201944_UpdateDataBase.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250813201944_UpdateDataBase.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Migrations\\20250813201944_UpdateDataBase.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Migrations\\20250813201944_UpdateDataBase.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Migrations\\20250813201944_UpdateDataBase.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-13T20:19:44.392Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T19:02:59.209Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAowBwAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T11:41:07.703Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "VerifyEmail.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\VerifyEmail.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Account\\VerifyEmail.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\VerifyEmail.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Account\\VerifyEmail.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T19:05:09.715Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\Register.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Account\\Register.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\Register.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Account\\Register.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T19:04:58.252Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "ResetPassword.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\ResetPassword.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Account\\ResetPassword.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\ResetPassword.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Account\\ResetPassword.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T19:05:04.835Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "AccessDenied.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\AccessDenied.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Account\\AccessDenied.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Account\\AccessDenied.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Account\\AccessDenied.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-13T16:53:04.841Z",
+              "WhenOpened": "2025-08-16T01:02:11.206Z",
               "EditorCaption": ""
             }
           ]

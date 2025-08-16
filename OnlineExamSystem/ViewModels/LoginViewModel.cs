@@ -4,6 +4,7 @@ namespace OnlineExamSystem.ViewModels
 {
     public class LoginViewModel
     {
+        public int Id { get; set; }
         [Required(ErrorMessage = "Email is Required")]
         [EmailAddress]
         public string Email { get; set; }
@@ -14,5 +15,8 @@ namespace OnlineExamSystem.ViewModels
 
         [Display(Name = "Remember me ?")]
         public bool RememberMe { get; set; }
+        [Required]
+        public string UserName { get; set; }
+        public int Role { get; set; }
     }
 }

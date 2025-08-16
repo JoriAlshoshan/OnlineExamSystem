@@ -1,48 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿namespace OnlineExamSystem.Models;
 
-namespace OnlineExamSystem.Models
+public class Exam
 {
-    public class Exam
-    {
-        [Key]
-        public int ExamId { get; set; }
+    public int Id { get; set; }
 
-        [Required, MaxLength(200)]
-        public string Title { get; set; }
+    public string Title {  get; set; }
 
-        public string Description { get; set; }
+    public string Description { get; set; }
 
-        [Required]
-        [ForeignKey("Subject")]
-        public int SubjectId { get; set; }
+    public DateTime StartDate { get; set; }
 
-        public virtual Subject Subject { get; set; }
+    public int Time { get; set; }
 
-        [MaxLength(50)]
-        public string Difficulty { get; set; }
+    public int GroupId { get; set; }
 
-        [Required]
-        public DateTime StartTime { get; set; } = DateTime.Now;
+    public Group Group { get; set; }
 
-        [Required]
-        public DateTime EndTime { get; set; } = DateTime.Now.AddHours(1);
+    public ICollection<ExamResult> ExamResult { get; set; } = new HashSet<ExamResult>();
 
-        [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Duration must be at least 1 minute.")]
-        public int DurationMinutes { get; set; } = 60;
+    public ICollection<QnA> QnA { get; set; }= new HashSet<QnA>();  
 
-        [Required]
-        [ForeignKey("CreatedByUser")]
-        public string CreatedBy { get; set; }
-
-        [Required]
-        public virtual UsersApp CreatedByUser { get; set; }
-
-        public virtual ICollection<Question> Questions { get; set; } = new List<Question>();
-
-        public bool IsPublished { get; set; } = false;
-    }
 }

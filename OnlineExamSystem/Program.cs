@@ -1,14 +1,26 @@
+using FluentAssertions.Common;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using OnlineExamSystem.Data;
 using OnlineExamSystem.Models;
 using OnlineExamSystem.Services;
+using OnlineExamSystem.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllersWithViews();
+builder.Services.AddSession();
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
+builder.Services.AddTransient<IGroupService, GroupService>();
+builder.Services.AddTransient<IStudentService, StudentService>();
+builder.Services.AddTransient<IExamService, ExamService>();
+builder.Services.AddTransient<IQnAService, QnAService>();
+builder.Services.AddTransient<IAccountService, AccountService>();
 
 builder.Services.AddIdentity<UsersApp, IdentityRole>(options =>
 {
@@ -22,12 +34,8 @@ builder.Services.AddIdentity<UsersApp, IdentityRole>(options =>
 
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 
-
-builder.Services.AddControllersWithViews();
-
 var app = builder.Build();
 await SeedService.SeedDatabase(app.Services);
-
 
 if (!app.Environment.IsDevelopment())
 {
@@ -36,6 +44,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 app.UseRouting();
+app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 

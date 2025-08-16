@@ -157,125 +157,193 @@ namespace OnlineExamSystem.Migrations
 
             modelBuilder.Entity("OnlineExamSystem.Models.Exam", b =>
                 {
-                    b.Property<int>("ExamId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ExamId"));
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
-                    b.Property<string>("Difficulty")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("DurationMinutes")
+                    b.Property<int>("GroupId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndTime")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsPublished")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("SubjectId")
+                    b.Property<int>("Time")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("ExamId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("CreatedBy");
+                    b.HasIndex("GroupId");
 
-                    b.HasIndex("SubjectId");
-
-                    b.ToTable("Exams", "exam");
+                    b.ToTable("Exams");
                 });
 
-            modelBuilder.Entity("OnlineExamSystem.Models.Option", b =>
+            modelBuilder.Entity("OnlineExamSystem.Models.ExamResult", b =>
                 {
-                    b.Property<int>("OptionId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OptionId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("IsCorrect")
-                        .HasColumnType("bit");
+                    b.Property<int>("Answer")
+                        .HasColumnType("int");
 
-                    b.Property<string>("OptionText")
+                    b.Property<int?>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QnAId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
-
-                    b.HasKey("OptionId");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("Options", "exam");
-                });
-
-            modelBuilder.Entity("OnlineExamSystem.Models.Question", b =>
-                {
-                    b.Property<int>("QuestionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionId"));
-
-                    b.Property<int>("ExamId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("QuestionText")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QuestionType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("QuestionId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ExamId");
 
-                    b.ToTable("Questions", "exam");
+                    b.HasIndex("QnAId");
+
+                    b.HasIndex("StudentsId");
+
+                    b.ToTable("ExamResults");
                 });
 
-            modelBuilder.Entity("OnlineExamSystem.Models.Subject", b =>
+            modelBuilder.Entity("OnlineExamSystem.Models.Group", b =>
                 {
-                    b.Property<int>("SubjectId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubjectId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("SubjectId");
+                    b.Property<string>("UserSId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.ToTable("Subjects", "exam");
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserSId");
+
+                    b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("OnlineExamSystem.Models.QnA", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Answer")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExamId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Question")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("option1")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("option2")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("option3")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("option4")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExamId");
+
+                    b.ToTable("QnA");
+                });
+
+            modelBuilder.Entity("OnlineExamSystem.Models.Student", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CVFileName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Contact")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int?>("GroupsId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PictureFileName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupsId");
+
+                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("OnlineExamSystem.Models.UsersApp", b =>
@@ -324,8 +392,8 @@ namespace OnlineExamSystem.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -334,6 +402,7 @@ namespace OnlineExamSystem.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -403,53 +472,93 @@ namespace OnlineExamSystem.Migrations
 
             modelBuilder.Entity("OnlineExamSystem.Models.Exam", b =>
                 {
-                    b.HasOne("OnlineExamSystem.Models.UsersApp", "CreatedByUser")
-                        .WithMany()
-                        .HasForeignKey("CreatedBy")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("OnlineExamSystem.Models.Group", "Group")
+                        .WithMany("Exam")
+                        .HasForeignKey("GroupId")
                         .IsRequired();
 
-                    b.HasOne("OnlineExamSystem.Models.Subject", "Subject")
-                        .WithMany()
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedByUser");
-
-                    b.Navigation("Subject");
+                    b.Navigation("Group");
                 });
 
-            modelBuilder.Entity("OnlineExamSystem.Models.Option", b =>
-                {
-                    b.HasOne("OnlineExamSystem.Models.Question", "Question")
-                        .WithMany("Options")
-                        .HasForeignKey("QuestionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Question");
-                });
-
-            modelBuilder.Entity("OnlineExamSystem.Models.Question", b =>
+            modelBuilder.Entity("OnlineExamSystem.Models.ExamResult", b =>
                 {
                     b.HasOne("OnlineExamSystem.Models.Exam", "Exam")
-                        .WithMany("Questions")
+                        .WithMany("ExamResult")
+                        .HasForeignKey("ExamId");
+
+                    b.HasOne("OnlineExamSystem.Models.QnA", "QnA")
+                        .WithMany("ExamResult")
+                        .HasForeignKey("QnAId")
+                        .IsRequired();
+
+                    b.HasOne("OnlineExamSystem.Models.Student", "Student")
+                        .WithMany("ExamResult")
+                        .HasForeignKey("StudentsId")
+                        .IsRequired();
+
+                    b.Navigation("Exam");
+
+                    b.Navigation("QnA");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("OnlineExamSystem.Models.Group", b =>
+                {
+                    b.HasOne("OnlineExamSystem.Models.UsersApp", "Users")
+                        .WithMany("Groups")
+                        .HasForeignKey("UserSId")
+                        .IsRequired();
+
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("OnlineExamSystem.Models.QnA", b =>
+                {
+                    b.HasOne("OnlineExamSystem.Models.Exam", "Exam")
+                        .WithMany("QnA")
                         .HasForeignKey("ExamId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Exam");
                 });
 
-            modelBuilder.Entity("OnlineExamSystem.Models.Exam", b =>
+            modelBuilder.Entity("OnlineExamSystem.Models.Student", b =>
                 {
-                    b.Navigation("Questions");
+                    b.HasOne("OnlineExamSystem.Models.Group", "Group")
+                        .WithMany("Students")
+                        .HasForeignKey("GroupsId");
+
+                    b.Navigation("Group");
                 });
 
-            modelBuilder.Entity("OnlineExamSystem.Models.Question", b =>
+            modelBuilder.Entity("OnlineExamSystem.Models.Exam", b =>
                 {
-                    b.Navigation("Options");
+                    b.Navigation("ExamResult");
+
+                    b.Navigation("QnA");
+                });
+
+            modelBuilder.Entity("OnlineExamSystem.Models.Group", b =>
+                {
+                    b.Navigation("Exam");
+
+                    b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("OnlineExamSystem.Models.QnA", b =>
+                {
+                    b.Navigation("ExamResult");
+                });
+
+            modelBuilder.Entity("OnlineExamSystem.Models.Student", b =>
+                {
+                    b.Navigation("ExamResult");
+                });
+
+            modelBuilder.Entity("OnlineExamSystem.Models.UsersApp", b =>
+                {
+                    b.Navigation("Groups");
                 });
 #pragma warning restore 612, 618
         }
