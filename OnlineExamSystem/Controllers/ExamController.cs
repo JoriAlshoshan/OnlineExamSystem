@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineExamSystem.Services;
 using OnlineExamSystem.ViewModels;
 
@@ -15,10 +16,14 @@ namespace OnlineExamSystem.Controllers
             _groupservice = groupservice;
         }
 
+        [Authorize(Roles = "Educator")]
+
         public IActionResult Index(int pageNumber =1,int pageSize=10)
         {
             return View(_examservice.GetAll(pageNumber,pageSize));
         }
+        [Authorize(Roles = "Educator")]
+
         public IActionResult Create(int id)
         {
             var model = new ExamViewModel();

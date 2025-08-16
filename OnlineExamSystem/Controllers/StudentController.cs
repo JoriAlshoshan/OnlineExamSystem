@@ -40,6 +40,7 @@ namespace OnlineExamSystem.Controllers
             }
             return View(studentViewModel);
         }
+        [Authorize(Roles = "Student")]
 
         public IActionResult AttendExam() 
         {
@@ -92,7 +93,7 @@ namespace OnlineExamSystem.Controllers
 
         }
 
-        //[Authorize(Roles = "Student")]
+        [Authorize(Roles = "Student")]
         public IActionResult ViewResult()
         {
             LoginViewModel seesionObj = HttpContext.Session.Get<LoginViewModel>("loginvm");

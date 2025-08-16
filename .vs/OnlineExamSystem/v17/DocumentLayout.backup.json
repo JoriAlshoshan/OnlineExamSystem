@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\views\\student\\viewresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\views\\student\\viewresult.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|c:\\users\\jorya\\source\\repos\\onlineexamsystem\\onlineexamsystem\\enums\\userroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E03FDD76-DD2C-42C4-88C3-63A4E369FB7C}|OnlineExamSystem\\OnlineExamSystem.csproj|solutionrelative:onlineexamsystem\\enums\\userroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,28 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ViewResult.cshtml",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Student\\ViewResult.cshtml",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Views\\Student\\ViewResult.cshtml",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Views\\Student\\ViewResult.cshtml",
-              "RelativeToolTip": "OnlineExamSystem\\Views\\Student\\ViewResult.cshtml",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-08-16T02:55:11.793Z",
+              "DocumentIndex": 1,
+              "Title": "UserRoles.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Enums\\UserRoles.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Enums\\UserRoles.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Enums\\UserRoles.cs",
+              "RelativeToolTip": "OnlineExamSystem\\Enums\\UserRoles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-16T16:11:34.543Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "StudentController.cs",
-              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\StudentController.cs",
-              "RelativeDocumentMoniker": "OnlineExamSystem\\Controllers\\StudentController.cs",
-              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\StudentController.cs",
-              "RelativeToolTip": "OnlineExamSystem\\Controllers\\StudentController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "OnlineExamSystem\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\jorya\\source\\repos\\OnlineExamSystem\\OnlineExamSystem\\Controllers\\AccountController.cs*",
+              "RelativeToolTip": "OnlineExamSystem\\Controllers\\AccountController.cs*",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAjwFMAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-16T02:18:59.001Z",
+              "WhenOpened": "2025-08-16T16:08:40.118Z",
               "EditorCaption": ""
             }
           ]

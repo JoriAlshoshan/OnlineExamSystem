@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineExamSystem.Services;
 using OnlineExamSystem.ViewModels;
 
@@ -14,11 +15,13 @@ namespace OnlineExamSystem.Controllers
             _examService = examService;
             _qnAService = qnAService;
         }
+        [Authorize(Roles = "Educator")]
 
         public ActionResult Index(int pageNumber=1, int pageSize=10)
         {
             return View(_qnAService.GetAll(pageNumber,pageSize));
         }
+        [Authorize(Roles = "Educator")]
 
         public ActionResult Create()
         {
