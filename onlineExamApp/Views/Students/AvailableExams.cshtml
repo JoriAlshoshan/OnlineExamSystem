@@ -1,0 +1,35 @@
+@model List<onlineExamApp.Models.Exam>
+
+@{
+    ViewData["Title"] = "Available Exams";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+
+<div class="container mt-4">
+    <h2>Available Exams</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info" style="background-color: #f5f1e9; color: #5e4b3c; border-color: #a68c6d;">
+            No exams are currently available.
+        </div>
+    }
+    else
+    {
+        <ul class="list-group mt-3">
+            @foreach (var exam in Model)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>
+                        <strong>@exam.Title</strong> - @exam.Subject <br />
+                        <small>@exam.StartTimeUtc.ToLocalTime().ToString("g") → @exam.EndTimeUtc.ToLocalTime().ToString("g")</small>
+                    </span>
+                    <a href="/Exams/Take/@exam.Id" class="btn btn-sm btn-outline-primary">Take Exam</a>
+                </li>
+            }
+        </ul>
+    }
+</div>

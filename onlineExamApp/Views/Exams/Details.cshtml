@@ -1,0 +1,105 @@
+@model onlineExamApp.ViewModel.ExamDetailsViewModel
+
+@{
+    ViewData["Title"] = "Exam Details";
+}
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+<div class="container mt-4">
+    <h2 class="mb-3">@Model.Exam.Title</h2>
+
+    <div class="mb-3">
+        <p><strong>Subject:</strong> @Model.Exam.Subject</p>
+        <p><strong>Difficulty:</strong> @Model.Exam.Difficulty</p>
+        <p><strong>Duration:</strong> @Model.Exam.DurationMinutes minutes</p>
+        <p><strong>Start Time:</strong> @Model.Exam.StartTimeUtc.ToString("f")</p>
+        <p><strong>End Time:</strong> @Model.Exam.EndTimeUtc.ToString("f")</p>
+        <p><strong>Description:</strong> @Model.Exam.Description</p>
+        <p><strong>Created By:</strong> @Model.Exam.Creator?.UserName</p>
+    </div>
+
+    <hr />
+
+    <h4>Questions</h4>
+
+    @if (Model.Exam.Questions != null && Model.Exam.Questions.Any())
+    {
+        <ol>
+            @foreach (var question in Model.Exam.Questions)
+            {
+                <li class="mb-3">
+                    <p><strong>@question.Text</strong></p>
+
+                    @if (question.Options != null && question.Options.Any())
+                    {
+                        <ul>
+                            @foreach (var option in question.Options)
+                            {
+                                <li>
+                                    @option.Text
+                                    @if (option.IsCorrect)
+                                    {
+                                        <span class="badge bg-success ms-1">Correct</span>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No options available.</p>
+                    }
+                </li>
+            }
+        </ol>
+    }
+    else
+    {
+        <p class="text-muted">No questions added to this exam.</p>
+    }
+
+    <hr />
+
+    <h4>Students Who Took This Exam</h4>
+
+    @if (!Model.StudentAttempts.Any())
+    {
+        <p class="text-muted">No students have taken this exam yet.</p>
+    }
+    else
+    {
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Student</th>
+                    <th>Score</th>
+                    <th>Submitted On</th>
+                    <th>Attempts</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var group in Model.StudentAttempts.GroupBy(a => a.StudentId))
+                {
+                    var student = group.First().Student;
+                    var submittedAttempt = group
+                    .Where(a => a.SubmittedTimeUtc != null)
+                    .OrderByDescending(a => a.SubmittedTimeUtc)
+                    .FirstOrDefault();
+
+                    <tr>
+                        <td>@(student?.DisplayName ?? student?.UserName ?? "Unknown")</td>
+                        <td>@(submittedAttempt?.Score ?? 0)</td>
+                        <td>@(submittedAttempt?.SubmittedTimeUtc?.ToLocalTime().ToString("g") ?? "Not submitted")</td>
+                        <td>@group.Count()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <a href="/Exams/MyExams" class="btn btn-outline-secondary mt-4">← Back to Exams</a>
+</div>
+
+
+

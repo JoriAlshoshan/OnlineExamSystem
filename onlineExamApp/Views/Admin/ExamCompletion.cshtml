@@ -1,0 +1,123 @@
+@{
+    ViewData["Title"] = "Exam Completion Stats";
+}
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+
+<h2 class="mb-4 text-center">Exam Completion Stats</h2>
+
+<div class="row mb-4 justify-content-center" style="max-width: 900px; margin: auto;">
+    <div class="col-auto text-center">
+        <div class="card shadow-sm" style="background-color: #ccb296; color: #5e4b3c; width: 250px; margin: auto;">
+            <div class="card-body">
+                <h5>Total Exams</h5>
+                <p class="display-5">@ViewBag.TotalExams</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-auto text-center">
+        <div class="card shadow-sm" style="background-color: #e0c9a6; color: #5e4b3c; width: 250px; margin: auto;">
+            <div class="card-body">
+                <h5>Total Started</h5>
+                <p class="display-5">@ViewBag.TotalStarted</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-auto text-center">
+        <div class="card shadow-sm" style="background-color: #a67c52; color: #fff; width: 250px; margin: auto;">
+            <div class="card-body">
+                <h5>Total Completed</h5>
+                <p class="display-5">@ViewBag.TotalCompleted</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p class="text-muted text-center mb-4" style="max-width: 700px; margin: auto;">
+    This section provides a visual overview of how many students have started and completed each exam.
+    It helps track student engagement and identify any drop-off trends.
+</p>
+
+<div id="loadingMessage" class="text-center text-muted mb-4">
+    <span class="spinner-border text-secondary" role="status" aria-hidden="true"></span>
+    <span class="ms-2">Loading chart data...</span>
+</div>
+
+<div id="completionChart" style="width: 80%; max-width: 700px; height: 400px; margin: auto;"></div>
+
+@section Scripts {
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script>
+        async function loadCompletionStats() {
+            const res = await fetch('@Url.Action("GetExamCompletionStats", "Admin")');
+
+            if (!res.ok) {
+                alert("Failed to load exam stats");
+                return;
+            }
+
+            const data = await res.json();
+            document.getElementById('loadingMessage').style.display = 'none';
+
+            if (!data || data.length === 0) {
+                document.getElementById('completionChart').innerHTML =
+                    '<p class="text-muted text-center">No exam data available to display.</p>';
+                return;
+            }
+
+            const labels = data.map(d => d.examTitle);
+            const startedData = data.map(d => d.started);
+            const completedData = data.map(d => d.completed);
+
+            Highcharts.chart('completionChart', {
+                chart: { type: 'column', backgroundColor: '#fff' },
+                title: {
+                    text: 'Exam Completion Stats',
+                    style: { fontSize: '16px', color: '#5e4b3c' }
+                },
+                xAxis: {
+                    categories: labels,
+                    title: { text: 'Exams' },
+                    labels: { style: { color: '#5e4b3c' } }
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Attempts Count',
+                        style: { color: '#5e4b3c' }
+                    },
+                    labels: { style: { color: '#5e4b3c' } }
+                },
+                legend: {
+                    itemStyle: { color: '#5e4b3c' }
+                },
+                plotOptions: {
+                    series: {
+                        animation: { duration: 1000 }
+                    }
+                },
+                series: [
+                    {
+                        name: 'Started',
+                        data: startedData,
+                        color: '#e0c9a6'
+                    },
+                    {
+                        name: 'Completed',
+                        data: completedData,
+                        color: '#a67c52'
+                    }
+                ],
+                credits: { enabled: false }
+            });
+        }
+
+        loadCompletionStats();
+    </script>
+}
+
+
+

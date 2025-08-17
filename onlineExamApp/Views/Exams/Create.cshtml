@@ -1,0 +1,57 @@
+@model onlineExamApp.ViewModel.ExamCreateViewModel
+@{
+    ViewData["Title"] = "Create Exam";
+}
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+<div class="container">
+    <h2>Create Exam</h2>
+    <form asp-action="Create" method="post">
+        <div class="form-group mb-3">
+            <label asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+        <div class="row g-3 mb-3">
+            <div class="col">
+                <label>Start (UTC)</label>
+                <input asp-for="StartTimeUtc" type="datetime-local" class="form-control" />
+            </div>
+            <div class="col">
+                <label>End (UTC)</label>
+                <input asp-for="EndTimeUtc" type="datetime-local" class="form-control" />
+            </div>
+            <div class="col">
+                <label asp-for="DurationMinutes">Duration (min)</label>
+                <input asp-for="DurationMinutes" type="number" min="1" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Subject"></label>
+            <input asp-for="Subject" class="form-control" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Difficulty"></label>
+            <input asp-for="Difficulty" class="form-control" />
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="MaxAttempts">Max Attempts Per Student</label>
+            <input asp-for="MaxAttempts" type="number" min="1" class="form-control" />
+            <span asp-validation-for="MaxAttempts" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-main">Create Exam</button>
+        <a href="/Home/EducatorPage" class="btn btn-outline-main ms-2">← Back</a>
+    </form>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

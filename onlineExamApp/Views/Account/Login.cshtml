@@ -1,0 +1,66 @@
+@using onlineExamApp.ViewModel
+@model LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<div class="account-container">
+    <div class="account-box shadow-sm">
+        <h2 class="account-title">Welcome Back</h2>
+
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-info text-center">
+                @TempData["Message"]
+            </div>
+        }
+
+        <form asp-action="Login" method="post" novalidate>
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" placeholder="example@domain.com" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+
+            <label asp-for="Password" class="form-label mt-3">Password</label>
+            <input asp-for="Password" class="form-control" type="password" placeholder="********" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+
+            <div class="d-flex justify-content-between align-items-center mt-3 mb-4">
+                <div class="form-check">
+                    <input asp-for="RememberMe" class="form-check-input" id="rememberMe" />
+                    <label class="form-check-label ms-1" for="rememberMe">
+                        Remember me
+                    </label>
+                </div>
+                <a asp-controller="Account" asp-action="VerifyEmail" class="forgot-link">
+                    Forgot Password?
+                </a>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 btn-lg">Login</button>
+
+            <div class="text-center mt-4">
+                <p>
+                    Don't have an account?
+                    <a asp-controller="Account" asp-action="Register" class="link-primary">Register</a>
+                </p>
+                <a asp-controller="Account" asp-action="Welcome" class="link-muted">
+                    ← Back to Home
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+
+
+

@@ -1,0 +1,83 @@
+@model onlineExamApp.Models.Question
+@{
+    ViewData["Title"] = "Edit Question";
+}
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+<div class="container">
+    <h2>Edit Question</h2>
+
+    <form asp-action="EditQuestion" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="ExamId" value="@Model.ExamId" />
+
+        <div class="form-group mb-3">
+            <label>Question Text</label>
+            <input name="Text" value="@Model.Text" class="form-control" required />
+        </div>
+        <div class="form-group mb-3">
+            <label>Points</label>
+            <input name="Points" type="number" value="@Model.Points" class="form-control" required />
+        </div>
+
+        <h5>Options</h5>
+        <div id="options-container" class="mb-3">
+            @for (int i = 0; i < Model.Options.Count; i++)
+            {
+                <div class="form-group option-item mb-2 d-flex align-items-center" data-index="@i">
+                    <input type="hidden" name="Options[@i].Id" value="@Model.Options[i].Id" />
+                    <input type="text" name="Options[@i].Text" value="@Model.Options[i].Text" class="form-control me-2" required />
+                    <label class="form-check-label me-2">
+                        <input type="checkbox" name="Options[@i].IsCorrect" class="form-check-input me-1" value="true" @(Model.Options[i].IsCorrect ? "checked" : "") />
+                        Correct
+                    </label>
+                    <button type="button" class="btn btn-danger btn-sm remove-option">Remove</button>
+                </div>
+            }
+        </div>
+
+        <button type="button" id="add-option" class="btn btn-outline-main btn-sm mb-3">Add Option</button><br />
+        <button type="submit" class="btn btn-main">Save</button>
+        <a href="/Exams/ManageQuestions/@Model.ExamId" class="btn btn-outline-main ms-2">Cancel</a>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        let optionIndex = @Model.Options.Count;
+        document.getElementById('add-option').addEventListener('click', () => {
+          const container = document.getElementById('options-container');
+          const div = document.createElement('div');
+          div.className = 'form-group option-item mb-2 d-flex align-items-center';
+          div.dataset.index = optionIndex;
+          div.innerHTML = `
+            <input type="hidden" name="Options[${optionIndex}].Id" value="0" />
+            <input type="text" name="Options[${optionIndex}].Text" class="form-control me-2" placeholder="Option text" required />
+            <label class="form-check-label me-2">
+              <input type="checkbox" name="Options[${optionIndex}].IsCorrect" class="form-check-input me-1" value="true" />
+              Correct
+            </label>
+            <button type="button" class="btn btn-danger btn-sm remove-option">Remove</button>
+          `;
+          container.appendChild(div);
+          optionIndex++;
+        });
+
+        document.getElementById('options-container').addEventListener('click', e => {
+          if (e.target.classList.contains('remove-option')) {
+            e.target.closest('.option-item').remove();
+            const opts = document.querySelectorAll('.option-item');
+            optionIndex = 0;
+            opts.forEach((opt, idx) => {
+              opt.dataset.index = idx;
+              opt.querySelector('input[type="hidden"]').name = `Options[${idx}].Id`;
+              opt.querySelector('input[type="text"]').name = `Options[${idx}].Text`;
+              opt.querySelector('input[type="checkbox"]').name = `Options[${idx}].IsCorrect`;
+              optionIndex++;
+            });
+          }
+        });
+    </script>
+}

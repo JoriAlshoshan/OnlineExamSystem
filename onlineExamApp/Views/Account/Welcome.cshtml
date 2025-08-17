@@ -1,0 +1,38 @@
+@using Microsoft.AspNetCore.Identity
+@using onlineExamApp.Models
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Welcome";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+
+    var isAuthenticated = User.Identity?.IsAuthenticated ?? false;
+    string userName = "User";
+
+    if (isAuthenticated)
+    {
+        var user = await UserManager.GetUserAsync(User);
+        userName = user?.DisplayName ?? "User";  
+    }
+}
+
+<div class="welcome-container">
+    <div class="welcome-box shadow-sm">
+        <h1 class="welcome-title">Welcome, @userName!</h1>
+        <p class="welcome-subtitle">We're glad to have you here at <strong>OnlineExam</strong>.</p>
+
+        @if (!isAuthenticated)
+        {
+            <p class="lead text-muted mt-4">
+                Explore our platform designed to help you prepare, practice, and perfect your exam performance.
+                You can browse through our features, take mock exams, or learn more about how we support students and educators.
+            </p>
+        }
+        else
+        {
+            <p class="text-success mt-4 fw-semibold">
+                You're logged in and ready to access all features. Head over to your dashboard to begin your exam journey.
+            </p>
+        }
+    </div>
+</div>

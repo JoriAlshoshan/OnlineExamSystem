@@ -1,0 +1,49 @@
+@model onlineExamApp.ViewModel.EditUserViewModel
+@{
+    ViewData["Title"] = "Edit User";
+}
+
+<h2 class="mb-4">Edit User - @Model.DisplayName</h2>
+
+<form asp-action="EditUser" method="post" class="needs-validation" novalidate>
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="DisplayName" class="form-label"></label>
+        <input asp-for="DisplayName" class="form-control" />
+        <span asp-validation-for="DisplayName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="University" class="form-label">University</label>
+        <input asp-for="University" class="form-control" />
+        <span asp-validation-for="University" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Roles</label>
+        <div>
+            @foreach (var role in Model.AllRoles)
+            {
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="Roles" value="@role" id="role_@role" @(Model.Roles.Contains(role) ? "checked" : "") />
+                    <label class="form-check-label" for="role_@role">@role</label>
+                </div>
+            }
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="ManageUsers" class="btn btn-secondary ms-2">Cancel</a>
+</form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

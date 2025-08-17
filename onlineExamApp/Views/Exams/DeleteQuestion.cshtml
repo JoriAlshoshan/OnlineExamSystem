@@ -1,0 +1,34 @@
+@model onlineExamApp.Models.Question
+@{
+    ViewData["Title"] = "Delete Question";
+}
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+<div class="container">
+    <h2>Delete Question</h2>
+    <div class="alert alert-warning">Are you sure you want to delete this question?</div>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5>@Model.Text</h5>
+            <p><strong>Points:</strong> @Model.Points</p>
+            <ul>
+                @foreach (var opt in Model.Options)
+                {
+                    <li>@opt.Text @if (opt.IsCorrect) {
+                    <strong class="text-success">(Correct)</strong>
+                }
+</li>
+                                }
+            </ul>
+        </div>
+    </div>
+    <form asp-action="DeleteQuestionConfirmed" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="@Model.Id" />
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a href="/Exams/ManageQuestions/@Model.ExamId" class="btn btn-outline-main ms-2">Cancel</a>
+    </form>
+</div>
+
+

@@ -1,0 +1,139 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">@ViewData["Title"]</h2>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card mb-3 shadow-sm" style="background-color: #ccb296; color: #fff;">
+                <div class="card-body">
+                    <h5 class="card-title">Total Students</h5>
+                    <p class="card-text display-4" style=" color: #7c6652;">@ViewBag.TotalStudents</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3 shadow-sm" style="background-color: #ccb296; color: #fff;">
+                <div class="card-body">
+                    <h5 class="card-title">Total Educators</h5>
+                    <p class="card-text display-4" style="color: #7c6652;">@ViewBag.TotalEducators</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-3 shadow-sm" style="background-color: #ccb296; color: #fff;">
+                <div class="card-body">
+                    <h5 class="card-title">Total Universities</h5>
+                    <p class="card-text display-4" style="color: #7c6652;">@ViewBag.TotalUniversities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Quick Performance Analytics</h5>
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="completionChart" style="height: 250px;"></div>
+                </div>
+                <div class="col-md-4">
+                    <div id="universityRankingChart" style="height: 250px;"></div>
+                </div>
+                <div class="col-md-4">
+                    <div id="educatorPerformanceChart" style="height: 250px; overflow-y: auto;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+    <script>
+        async function loadCompletionStats() {
+            const res = await fetch('@Url.Action("GetExamCompletionStats", "Admin")');
+            if (!res.ok) { alert("Failed to load exam stats"); return; }
+
+            const data = await res.json();
+
+            const labels = data.map(d => d.examTitle);
+            const startedData = data.map(d => d.started);
+            const completedData = data.map(d => d.completed);
+
+            Highcharts.chart('completionChart', {
+                chart: { type: 'column', height: 250 },
+                title: { text: 'Exam Completion Stats', style: { fontSize: '14px', color: '#5e4b3c' } },
+                xAxis: { categories: labels, title: { text: 'Exams', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
+                yAxis: { min: 0, title: { text: 'Attempts Count', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
+                legend: { itemStyle: { fontSize: '10px', color: '#5e4b3c' } },
+                series: [
+                    { name: 'Started', data: startedData, color: '#d2b48c' }, 
+                    { name: 'Completed', data: completedData, color: '#8b7e74' } 
+                ],
+                credits: { enabled: false }
+            });
+        }
+
+        async function loadUniversityRanking() {
+            const res = await fetch('@Url.Action("GetUniversityRankingStats", "Admin")');
+            const data = await res.json();
+
+            Highcharts.chart('universityRankingChart', {
+                chart: { type: 'bar', height: 250 },
+                title: { text: 'University Ranking (Pass vs Fail)', style: { fontSize: '14px', color: '#5e4b3c' } },
+                xAxis: { categories: data.map(d => d.university), labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
+                yAxis: { min: 0, title: { text: 'Number of Students', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
+                legend: { itemStyle: { fontSize: '10px', color: '#5e4b3c' } },
+                series: [
+                    { name: 'Passed', data: data.map(d => d.passed), color: '#8b7e74' },
+                    { name: 'Failed', data: data.map(d => d.failed), color: '#b55039' }
+                ],
+                credits: { enabled: false }
+            });
+        }
+
+        async function loadEducatorPerformance() {
+            const res = await fetch('@Url.Action("GetEducatorPerformanceStats", "Admin")');
+            if (!res.ok) { alert("Failed to load educator stats"); return; }
+
+            const data = await res.json();
+
+            if(data.length > 0) {
+                const educator = data[0];
+
+                Highcharts.chart('educatorPerformanceChart', {
+                    chart: { type: 'column', height: 250 },
+                    title: { text: `Educator:}`, style: { fontSize: '14px', color: '#5e4b3c' } },
+                    xAxis: { categories: educator.universityStats.map(u => u.university), labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
+                    yAxis: { min: 0, title: { text: 'Number of Students', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
+                    plotOptions: { column: { stacking: 'normal' } },
+                    legend: { itemStyle: { fontSize: '10px', color: '#5e4b3c' } },
+                    series: [
+                        { name: 'Passed', data: educator.universityStats.map(u => u.passed), color: '#8b7e74' },
+                        { name: 'Failed', data: educator.universityStats.map(u => u.failed), color: '#b55039' }
+                    ],
+                    credits: { enabled: false }
+                });
+            } else {
+                document.getElementById('educatorPerformanceChart').innerHTML = '<p class="text-muted text-center" style="font-size:12px;">No educator data available</p>';
+            }
+        }
+
+        loadCompletionStats();
+        loadUniversityRanking();
+        loadEducatorPerformance();
+    </script>
+}
+
+
+
+

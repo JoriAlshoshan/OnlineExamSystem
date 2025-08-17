@@ -1,0 +1,51 @@
+@model List<onlineExamApp.Models.StudentExamAttempt>
+
+@{
+    ViewData["Title"] = "My Results";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+
+<div class="container mt-4">
+    <h2 class="mb-4">My Exam Results</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">You haven't taken any exams yet.</div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover shadow-sm rounded">
+                <thead class="table-light">
+                    <tr class="text-center">
+                        <th>Exam</th>
+                        <th>Subject</th>
+                        <th>Score</th>
+                        <th>Submitted On</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var attempt in Model)
+                    {
+                        <tr class="text-center align-middle">
+                            <td>@attempt.Exam.Title</td>
+                            <td>@attempt.Exam.Subject</td>
+                            <td>
+                                <span class="badge bg-info">
+                                    @attempt.Score
+                                </span>
+                            </td>
+                            <td>@attempt.SubmittedTimeUtc?.ToLocalTime().ToString("g")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+
+

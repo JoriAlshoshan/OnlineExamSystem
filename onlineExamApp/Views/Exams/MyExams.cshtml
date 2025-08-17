@@ -1,0 +1,76 @@
+@model List<onlineExamApp.Models.Exam>
+@{
+    ViewData["Title"] = "My Exams";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+<div class="container">
+    <h2>My Created Exams</h2>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">You haven't created any exams yet.</div>
+    }
+    else
+    {
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Subject</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var exam in Model)
+                {
+                    <tr>
+                        <td>@exam.Title</td>
+                        <td>@exam.Subject</td>
+                        <td>@exam.StartTimeUtc.ToString("g")</td>
+                        <td>@exam.EndTimeUtc.ToString("g")</td>
+                        <td>
+                            <a href="/Exams/Details/@exam.Id" class="btn btn-sm btn-outline-main mb-1">Details</a>
+                            <a href="/Exams/ManageQuestions?examId=@exam.Id" class="btn btn-sm btn-outline-main mb-1">Manage</a>
+
+                            <form id="deleteForm-@exam.Id" asp-action="Delete" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="id" value="@exam.Id" />
+                                <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete(@exam.Id)">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <a href="/Exams/EducatorPage" class="btn btn-outline-main mt-3">← Back to Educator Page</a>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function confirmDelete(examId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "This action cannot be undone.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById(`deleteForm-${examId}`).submit();
+                }
+            });
+        }
+    </script>
+}
+

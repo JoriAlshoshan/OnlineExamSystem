@@ -1,0 +1,202 @@
+@model onlineExamApp.Models.Exam
+@{
+    ViewData["Title"] = "Manage Questions";
+    var examId = ViewBag.ExamId;
+}
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+<div class="container">
+    <h2>Questions for: <span class="text-success">@Model.Title</span></h2>
+    <div id="alertBox" class="alert d-none mt-3"></div>
+
+    <div class="mb-4">
+        @foreach (var q in Model.Questions)
+        {
+            <div class="card mb-2">
+                <div class="card-body">
+                    <h5 class="card-title">@q.Text <span class="text-muted">(@q.Points pts, @q.Type)</span></h5>
+                    <ul>
+                        @foreach (var o in q.Options)
+                        {
+                            <li>
+                                @o.Text
+                                @if (o.IsCorrect)
+                                {
+                                    <strong class="text-success">(Correct)</strong>
+                                }
+                            </li>
+                        }
+                    </ul>
+                    <div>
+                        <a href="/Exams/EditQuestion/@q.Id" class="btn btn-sm btn-outline-main mb-1">Edit</a>
+                        <a href="/Exams/DeleteQuestion/@q.Id" class="btn btn-sm btn-danger mb-1">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <hr />
+    <h4>Add New Question</h4>
+    <form id="addQuestionForm">
+        @Html.AntiForgeryToken()
+        <div class="form-group mb-2">
+            <label>Question Text</label>
+            <input id="qText" class="form-control" placeholder="Enter question text" />
+        </div>
+        <div class="form-group mb-2">
+            <label>Points</label>
+            <input id="qPoints" type="number" value="1" min="1" class="form-control" />
+        </div>
+        <div class="form-group mb-2">
+            <label>Type</label>
+            <select id="qType" class="form-control">
+                <option value="MCQ">Multiple Choice</option>
+                <option value="TrueFalse">True/False</option>
+            </select>
+        </div>
+        <div id="optionsContainer" class="mb-2">
+        </div>
+        <button type="button" id="addOptionBtn" class="btn btn-outline-main btn-sm mb-2">Add Option</button><br />
+        <button id="addQuestionBtn" type="submit" class="btn btn-main">Save Question</button>
+        <a href="/Exams/MyExams" class="btn btn-outline-main ms-2">Back to My Exams</a>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        const addOptionBtn = document.getElementById('addOptionBtn');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const qTypeSelect = document.getElementById('qType');
+
+        function showAlert(message, type = 'danger') {
+            const box = document.getElementById('alertBox');
+            box.className = `alert alert-${type}`;
+            box.textContent = message;
+            box.classList.remove('d-none');
+        }
+
+        function renderOptionsForTrueFalse() {
+            optionsContainer.innerHTML = '';
+
+            const trueOption = document.createElement('div');
+            trueOption.className = 'optionRow mb-1 d-flex align-items-center';
+            trueOption.innerHTML = `
+                <input class="optText form-control me-2" value="True" disabled />
+                <label class="form-check-label">
+                    <input class="optCorrect me-1" type="radio" name="correctTF" value="true" />Correct
+                </label>
+            `;
+
+            const falseOption = document.createElement('div');
+            falseOption.className = 'optionRow mb-1 d-flex align-items-center';
+            falseOption.innerHTML = `
+                <input class="optText form-control me-2" value="False" disabled />
+                <label class="form-check-label">
+                    <input class="optCorrect me-1" type="radio" name="correctTF" value="false" />Correct
+                </label>
+            `;
+
+            optionsContainer.appendChild(trueOption);
+            optionsContainer.appendChild(falseOption);
+            addOptionBtn.disabled = true;
+        }
+
+        function enableCustomOptions() {
+            optionsContainer.innerHTML = '';
+            addOptionBtn.disabled = false;
+            addOption(); 
+        }
+
+        function addOption() {
+            const c = document.createElement('div');
+            c.className = 'optionRow mb-1 d-flex align-items-center';
+            c.innerHTML = `<input class="optText form-control me-2" placeholder="Option text" style="flex:1" />
+                           <label class="form-check-label">
+                               <input class="optCorrect me-1" type="checkbox" />Correct
+                           </label>`;
+            optionsContainer.appendChild(c);
+        }
+
+        if (qTypeSelect.value === "TrueFalse") {
+            renderOptionsForTrueFalse();
+        } else {
+            enableCustomOptions();
+        }
+
+        qTypeSelect.addEventListener('change', () => {
+            if (qTypeSelect.value === "TrueFalse") {
+                renderOptionsForTrueFalse();
+            } else {
+                enableCustomOptions();
+            }
+        });
+
+        addOptionBtn.addEventListener('click', e => {
+            e.preventDefault();
+            addOption();
+        });
+
+        document.getElementById('addQuestionBtn').addEventListener('click', async e => {
+            e.preventDefault();
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+            const text = document.getElementById('qText').value.trim();
+            const points = parseFloat(document.getElementById('qPoints').value) || 0;
+            const type = document.getElementById('qType').value;
+
+            let options = [];
+
+            if (!text) return showAlert('Please enter question text.');
+
+            if (type === 'TrueFalse') {
+                const selectedValue = document.querySelector('input[name="correctTF"]:checked');
+                if (!selectedValue) return showAlert('Please select the correct answer.');
+                options = [
+                    { text: "True", isCorrect: selectedValue.value === "true" },
+                    { text: "False", isCorrect: selectedValue.value === "false" }
+                ];
+            } else {
+                options = Array.from(document.querySelectorAll('.optionRow')).map(r => {
+                    return {
+                        text: r.querySelector('.optText').value.trim(),
+                        isCorrect: r.querySelector('.optCorrect').checked
+                    };
+                }).filter(o => o.text);
+
+                if (options.length < 2) return showAlert('At least two options required.');
+                if (!options.some(o => o.isCorrect)) return showAlert('Please mark at least one correct option.');
+            }
+
+            const payload = {
+                examId: @examId,
+                text,
+                points,
+                type,
+                options
+            };
+
+            const res = await fetch('/Exams/AddQuestion', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (res.ok) {
+                showAlert('Question added successfully!', 'success');
+                setTimeout(() => location.reload(), 1000);
+            } else {
+                const err = await res.text();
+                showAlert('Error: ' + err);
+            }
+        });
+    </script>
+}
+
+
+
+
+

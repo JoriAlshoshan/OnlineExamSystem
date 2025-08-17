@@ -1,0 +1,97 @@
+@{
+    ViewData["Title"] = "Educator Performance";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+
+<h2 class="mb-4 text-center">Educator Performance by University</h2>
+
+<div class="row mb-4 justify-content-center" style="max-width: 900px; margin: auto;">
+    <div class="col-auto text-center">
+        <div class="card shadow-sm" style="background-color: #ccb296; color: #5e4b3c; width: 250px; margin: auto;">
+            <div class="card-body">
+                <h5>Total Educators</h5>
+                <p class="display-5">@ViewBag.TotalEducators</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-auto text-center">
+        <div class="card shadow-sm" style="background-color: #e0c9a6; color: #5e4b3c; width: 250px; margin: auto;">
+            <div class="card-body">
+                <h5>Total Universities</h5>
+                <p class="display-5">@ViewBag.TotalUniversities</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<p class="text-muted text-center mb-4" style="max-width: 700px; margin: auto;">
+    This section provides a summary of educator performance across universities, including total educators, universities, and student pass/fail counts.
+</p>
+
+<div id="educatorPerformanceChart" style="width: 90%; max-width: 900px; height: 500px; margin: auto;"></div>
+
+@section Scripts {
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script>
+        async function loadEducatorPerformance() {
+            const res = await fetch('@Url.Action("GetEducatorPerformanceStats", "Admin")');
+            if (!res.ok) {
+                alert("Failed to load educator stats");
+                return;
+            }
+
+            const data = await res.json();
+            if (!data || data.length === 0) {
+                document.getElementById('educatorPerformanceChart').innerHTML =
+                    '<p class="text-muted text-center" style="font-size:12px;">No educator data available</p>';
+                return;
+            }
+
+            const allUniversities = [...new Set(data.flatMap(e => e.universityStats.map(u => u.university)))];
+
+            const series = [];
+
+            data.forEach(educator => {
+                const passedData = [];
+                const failedData = [];
+
+                allUniversities.forEach(univ => {
+                    const univData = educator.universityStats.find(u => u.university === univ);
+                    passedData.push(univData ? univData.passed : 0);
+                    failedData.push(univData ? univData.failed : 0);
+                });
+
+                series.push({
+                    name: `${educator.educatorName} - Passed`,
+                    data: passedData,
+                    stack: educator.educatorName,
+                    color: '#8b7e74'
+                });
+
+                series.push({
+                    name: `${educator.educatorName} - Failed`,
+                    data: failedData,
+                    stack: educator.educatorName,
+                    color: '#b55039'
+                });
+            });
+
+            Highcharts.chart('educatorPerformanceChart', {
+                chart: { type: 'column', backgroundColor: '#fff' },
+                title: { text: 'Educator Performance by University' },
+                xAxis: { categories: allUniversities },
+                yAxis: { min: 0, title: { text: 'Number of Students' } },
+                plotOptions: { column: { stacking: 'normal' } },
+                series: series,
+                credits: { enabled: false }
+            });
+        }
+
+        loadEducatorPerformance();
+    </script>
+}
+
+
