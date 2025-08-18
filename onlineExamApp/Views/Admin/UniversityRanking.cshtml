@@ -1,18 +1,20 @@
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "University Ranking";
+    ViewData["Title"] = Localizer["UniversityRankingTitle"];
 }
 
 <head>
     <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
 </head>
 
-<h2 class="mb-4 text-center">University Ranking (Pass vs Fail)</h2>
+<h2 class="mb-4 text-center">@Localizer["UniversityRankingTitle"]</h2>
 
 <div class="row mb-4 justify-content-center" style="max-width: 900px; margin: auto;">
     <div class="col-auto text-center">
         <div class="card shadow-sm" style="background-color: #ccb296; color: #5e4b3c; width: 250px; margin: auto;">
             <div class="card-body">
-                <h5>Total Universities</h5>
+                <h5>@Localizer["TotalUniversities"]</h5>
                 <p class="display-5">@ViewBag.TotalUniversities</p>
             </div>
         </div>
@@ -20,7 +22,7 @@
     <div class="col-auto text-center">
         <div class="card shadow-sm" style="background-color: #e0c9a6; color: #5e4b3c; width: 250px; margin: auto;">
             <div class="card-body">
-                <h5>Total Passed</h5>
+                <h5>@Localizer["Passed"]</h5>
                 <p class="display-5">@ViewBag.TotalPassed</p>
             </div>
         </div>
@@ -28,7 +30,7 @@
     <div class="col-auto text-center">
         <div class="card shadow-sm" style="background-color: #a67c52; color: #fff; width: 250px; margin: auto;">
             <div class="card-body">
-                <h5>Total Failed</h5>
+                <h5>@Localizer["Failed"]</h5>
                 <p class="display-5">@ViewBag.TotalFailed</p>
             </div>
         </div>
@@ -36,7 +38,7 @@
 </div>
 
 <p class="text-muted text-center mb-4" style="max-width: 700px; margin: auto;">
-    This section shows a quick overview of university pass/fail statistics.
+    @Localizer["UniversityRankingDescription"]
 </p>
 
 <div id="universityRankingChart" style="width: 80%; max-width: 700px; height: 400px; margin: auto;"></div>
@@ -47,7 +49,7 @@
         async function loadUniversityRanking() {
             const res = await fetch('@Url.Action("GetUniversityRankingStats", "Admin")');
             if (!res.ok) {
-                alert("Failed to load university ranking data");
+                alert("@Localizer["FailedToLoadRanking"]");
                 return;
             }
 
@@ -55,12 +57,12 @@
 
             Highcharts.chart('universityRankingChart', {
                 chart: { type: 'bar', backgroundColor: '#fff' },
-                title: { text: 'University Ranking (Pass vs Fail)' },
+                title: { text: '@Localizer["UniversityRankingTitle"]' },
                 xAxis: { categories: data.map(d => d.university) },
-                yAxis: { min: 0, title: { text: 'Number of Students' } },
+                yAxis: { min: 0, title: { text: '@Localizer["NumberOfStudents"]' } },
                 series: [
-                    { name: 'Passed', data: data.map(d => d.passed), color: '#8b7e74' },
-                    { name: 'Failed', data: data.map(d => d.failed), color: '#b55039' }
+                    { name: '@Localizer["Passed"]', data: data.map(d => d.passed), color: '#8b7e74' },
+                    { name: '@Localizer["Failed"]', data: data.map(d => d.failed), color: '#b55039' }
                 ],
                 credits: { enabled: false }
             });
@@ -69,4 +71,5 @@
         loadUniversityRanking();
     </script>
 }
+
 

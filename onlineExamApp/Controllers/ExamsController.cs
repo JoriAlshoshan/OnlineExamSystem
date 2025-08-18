@@ -392,5 +392,19 @@ namespace onlineExamApp.Controllers
             return View("Take", exam);
         }
 
+        [Authorize(Roles = "Student")]
+        public async Task<IActionResult> TakeAr(int id)
+        {
+            var exam = await _db.Exams
+                .Include(e => e.Questions)
+                    .ThenInclude(q => q.Options)
+                .FirstOrDefaultAsync(e => e.Id == id);
+
+            if (exam == null)
+                return NotFound();
+
+            return View("TakeAr", exam);
+        }
+
     }
 }

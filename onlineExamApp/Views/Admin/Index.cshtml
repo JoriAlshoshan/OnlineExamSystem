@@ -1,28 +1,31 @@
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Admin Dashboard";
+    ViewData["Title"] = Localizer["AdminDashboard"];
 }
+
 <head>
     <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
 </head>
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="mb-0">@ViewData["Title"]</h2>
+        <h2 class="mb-0">@Localizer["AdminDashboard"]</h2>
     </div>
 
     <div class="row mb-4">
         <div class="col-md-4">
             <div class="card mb-3 shadow-sm" style="background-color: #ccb296; color: #fff;">
                 <div class="card-body">
-                    <h5 class="card-title">Total Students</h5>
-                    <p class="card-text display-4" style=" color: #7c6652;">@ViewBag.TotalStudents</p>
+                    <h5 class="card-title">@Localizer["TotalStudents"]</h5>
+                    <p class="card-text display-4" style="color: #7c6652;">@ViewBag.TotalStudents</p>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card mb-3 shadow-sm" style="background-color: #ccb296; color: #fff;">
                 <div class="card-body">
-                    <h5 class="card-title">Total Educators</h5>
+                    <h5 class="card-title">@Localizer["TotalEducators"]</h5>
                     <p class="card-text display-4" style="color: #7c6652;">@ViewBag.TotalEducators</p>
                 </div>
             </div>
@@ -30,7 +33,7 @@
         <div class="col-md-4">
             <div class="card mb-3 shadow-sm" style="background-color: #ccb296; color: #fff;">
                 <div class="card-body">
-                    <h5 class="card-title">Total Universities</h5>
+                    <h5 class="card-title">@Localizer["TotalUniversities"]</h5>
                     <p class="card-text display-4" style="color: #7c6652;">@ViewBag.TotalUniversities</p>
                 </div>
             </div>
@@ -39,7 +42,7 @@
 
     <div class="card shadow-sm mb-4">
         <div class="card-body">
-            <h5 class="card-title">Quick Performance Analytics</h5>
+            <h5 class="card-title">@Localizer["QuickPerformanceAnalytics"]</h5>
             <div class="row">
                 <div class="col-md-4">
                     <div id="completionChart" style="height: 250px;"></div>
@@ -61,7 +64,7 @@
     <script>
         async function loadCompletionStats() {
             const res = await fetch('@Url.Action("GetExamCompletionStats", "Admin")');
-            if (!res.ok) { alert("Failed to load exam stats"); return; }
+            if (!res.ok) { alert("@Localizer["FailedToLoadExamStats"]"); return; }
 
             const data = await res.json();
 
@@ -71,13 +74,13 @@
 
             Highcharts.chart('completionChart', {
                 chart: { type: 'column', height: 250 },
-                title: { text: 'Exam Completion Stats', style: { fontSize: '14px', color: '#5e4b3c' } },
-                xAxis: { categories: labels, title: { text: 'Exams', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
-                yAxis: { min: 0, title: { text: 'Attempts Count', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
+                title: { text: '@Localizer["ExamCompletionStats"]', style: { fontSize: '14px', color: '#5e4b3c' } },
+                xAxis: { categories: labels, title: { text: '@Localizer["Exams"]', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
+                yAxis: { min: 0, title: { text: '@Localizer["AttemptsCount"]', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
                 legend: { itemStyle: { fontSize: '10px', color: '#5e4b3c' } },
                 series: [
-                    { name: 'Started', data: startedData, color: '#d2b48c' }, 
-                    { name: 'Completed', data: completedData, color: '#8b7e74' } 
+                    { name: '@Localizer["Started"]', data: startedData, color: '#d2b48c' },
+                    { name: '@Localizer["Completed"]', data: completedData, color: '#8b7e74' }
                 ],
                 credits: { enabled: false }
             });
@@ -89,13 +92,13 @@
 
             Highcharts.chart('universityRankingChart', {
                 chart: { type: 'bar', height: 250 },
-                title: { text: 'University Ranking (Pass vs Fail)', style: { fontSize: '14px', color: '#5e4b3c' } },
+                title: { text: '@Localizer["UniversityRankingTitle"]', style: { fontSize: '14px', color: '#5e4b3c' } },
                 xAxis: { categories: data.map(d => d.university), labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
-                yAxis: { min: 0, title: { text: 'Number of Students', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
+                yAxis: { min: 0, title: { text: '@Localizer["NumberOfStudents"]', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
                 legend: { itemStyle: { fontSize: '10px', color: '#5e4b3c' } },
                 series: [
-                    { name: 'Passed', data: data.map(d => d.passed), color: '#8b7e74' },
-                    { name: 'Failed', data: data.map(d => d.failed), color: '#b55039' }
+                    { name: '@Localizer["Passed"]', data: data.map(d => d.passed), color: '#8b7e74' },
+                    { name: '@Localizer["Failed"]', data: data.map(d => d.failed), color: '#b55039' }
                 ],
                 credits: { enabled: false }
             });
@@ -103,7 +106,7 @@
 
         async function loadEducatorPerformance() {
             const res = await fetch('@Url.Action("GetEducatorPerformanceStats", "Admin")');
-            if (!res.ok) { alert("Failed to load educator stats"); return; }
+            if (!res.ok) { alert("@Localizer["FailedToLoadEducatorStats"]"); return; }
 
             const data = await res.json();
 
@@ -112,19 +115,19 @@
 
                 Highcharts.chart('educatorPerformanceChart', {
                     chart: { type: 'column', height: 250 },
-                    title: { text: `Educator:}`, style: { fontSize: '14px', color: '#5e4b3c' } },
+                    title: { text: '', style: { fontSize: '14px', color: '#5e4b3c' } },
                     xAxis: { categories: educator.universityStats.map(u => u.university), labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
-                    yAxis: { min: 0, title: { text: 'Number of Students', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
+                    yAxis: { min: 0, title: { text: '@Localizer["NumberOfStudents"]', style: { color: '#5e4b3c' } }, labels: { style: { fontSize: '10px', color: '#5e4b3c' } } },
                     plotOptions: { column: { stacking: 'normal' } },
                     legend: { itemStyle: { fontSize: '10px', color: '#5e4b3c' } },
                     series: [
-                        { name: 'Passed', data: educator.universityStats.map(u => u.passed), color: '#8b7e74' },
-                        { name: 'Failed', data: educator.universityStats.map(u => u.failed), color: '#b55039' }
+                        { name: '@Localizer["Passed"]', data: educator.universityStats.map(u => u.passed), color: '#8b7e74' },
+                        { name: '@Localizer["Failed"]', data: educator.universityStats.map(u => u.failed), color: '#b55039' }
                     ],
                     credits: { enabled: false }
                 });
             } else {
-                document.getElementById('educatorPerformanceChart').innerHTML = '<p class="text-muted text-center" style="font-size:12px;">No educator data available</p>';
+                document.getElementById('educatorPerformanceChart').innerHTML = '<p class="text-muted text-center" style="font-size:12px;">@Localizer["NoEducatorData"]</p>';
             }
         }
 
@@ -133,6 +136,7 @@
         loadEducatorPerformance();
     </script>
 }
+
 
 
 

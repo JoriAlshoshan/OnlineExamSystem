@@ -1,46 +1,47 @@
 @using OnlineExamSystem.ViewModels
 @model RegisterViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Register";
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
-
 }
 
 <div class="account-container">
     <div class="account-box shadow-sm">
-        <h2 class="account-title">Create an Account</h2>
+        <h2 class="account-title">@Localizer["CreateAccount"]</h2>
 
         <form asp-action="Register" method="post" novalidate>
             @Html.AntiForgeryToken()
 
             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-            <label asp-for="Name" class="form-label">Full Name</label>
+            <label asp-for="Name" class="form-label">@Localizer["FullName"]</label>
             <input asp-for="Name" class="form-control" placeholder="Your full name" />
             <span asp-validation-for="Name" class="text-danger"></span>
 
-            <label asp-for="Email" class="form-label mt-3">Email</label>
+            <label asp-for="Email" class="form-label mt-3">@Localizer["Email"]</label>
             <input asp-for="Email" class="form-control" placeholder="example@domain.com" />
             <span asp-validation-for="Email" class="text-danger"></span>
 
-            <label asp-for="Password" class="form-label mt-3">Password</label>
+            <label asp-for="Password" class="form-label mt-3">@Localizer["Password"]</label>
             <input asp-for="Password" class="form-control" type="password" placeholder="********" />
             <span asp-validation-for="Password" class="text-danger"></span>
 
-            <label asp-for="ConfirmPassword" class="form-label mt-3">Confirm Password</label>
+            <label asp-for="ConfirmPassword" class="form-label mt-3">@Localizer["ConfirmPassword"]</label>
             <input asp-for="ConfirmPassword" class="form-control" type="password" placeholder="********" />
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 
-            <button type="submit" class="btn btn-primary w-100 btn-lg mt-4">Register</button>
+            <button type="submit" class="btn btn-primary w-100 btn-lg mt-4">@Localizer["Register"]</button>
 
             <div class="text-center mt-4">
                 <p>
-                    Already have an account?
-                    <a asp-controller="Account" asp-action="Login" class="link-primary">Login</a>
+                    @Localizer["HaveAccount"]
+                    <a asp-controller="Account" asp-action="Login" class="link-primary">@Localizer["Login"]</a>
                 </p>
                 <a asp-controller="Account" asp-action="Welcome" class="link-muted">
-                    ← Back to Home
+                    @Localizer["BackToHome"]
                 </a>
             </div>
         </form>
@@ -50,7 +51,5 @@
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }
-
-
 
 

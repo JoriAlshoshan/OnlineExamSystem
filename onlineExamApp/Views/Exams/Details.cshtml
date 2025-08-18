@@ -1,27 +1,29 @@
 @model onlineExamApp.ViewModel.ExamDetailsViewModel
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
 
 @{
-    ViewData["Title"] = "Exam Details";
+    ViewData["Title"] = Localizer["ExamDetails"];
 }
 <head>
     <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
 </head>
+
 <div class="container mt-4">
     <h2 class="mb-3">@Model.Exam.Title</h2>
 
     <div class="mb-3">
-        <p><strong>Subject:</strong> @Model.Exam.Subject</p>
-        <p><strong>Difficulty:</strong> @Model.Exam.Difficulty</p>
-        <p><strong>Duration:</strong> @Model.Exam.DurationMinutes minutes</p>
-        <p><strong>Start Time:</strong> @Model.Exam.StartTimeUtc.ToString("f")</p>
-        <p><strong>End Time:</strong> @Model.Exam.EndTimeUtc.ToString("f")</p>
-        <p><strong>Description:</strong> @Model.Exam.Description</p>
-        <p><strong>Created By:</strong> @Model.Exam.Creator?.UserName</p>
+        <p><strong>@Localizer["Subject"]:</strong> @Model.Exam.Subject</p>
+        <p><strong>@Localizer["Difficulty"]:</strong> @Model.Exam.Difficulty</p>
+        <p><strong>@Localizer["Duration"]:</strong> @Model.Exam.DurationMinutes @Localizer["Minutes"]</p>
+        <p><strong>@Localizer["StartTime"]:</strong> @Model.Exam.StartTimeUtc.ToString("f")</p>
+        <p><strong>@Localizer["EndTime"]:</strong> @Model.Exam.EndTimeUtc.ToString("f")</p>
+        <p><strong>@Localizer["Description"]:</strong> @Model.Exam.Description</p>
+        <p><strong>@Localizer["CreatedBy"]:</strong> @Model.Exam.Creator?.UserName</p>
     </div>
 
     <hr />
-
-    <h4>Questions</h4>
+    <h4>@Localizer["Questions"]</h4>
 
     @if (Model.Exam.Questions != null && Model.Exam.Questions.Any())
     {
@@ -40,7 +42,7 @@
                                     @option.Text
                                     @if (option.IsCorrect)
                                     {
-                                        <span class="badge bg-success ms-1">Correct</span>
+                                        <span class="badge bg-success ms-1">@Localizer["Correct"]</span>
                                     }
                                 </li>
                             }
@@ -48,7 +50,7 @@
                     }
                     else
                     {
-                        <p class="text-muted">No options available.</p>
+                        <p class="text-muted">@Localizer["NoOptions"]</p>
                     }
                 </li>
             }
@@ -56,26 +58,25 @@
     }
     else
     {
-        <p class="text-muted">No questions added to this exam.</p>
+        <p class="text-muted">@Localizer["NoQuestions"]</p>
     }
 
     <hr />
-
-    <h4>Students Who Took This Exam</h4>
+    <h4>@Localizer["StudentsWhoTookExam"]</h4>
 
     @if (!Model.StudentAttempts.Any())
     {
-        <p class="text-muted">No students have taken this exam yet.</p>
+        <p class="text-muted">@Localizer["NoStudents"]</p>
     }
     else
     {
         <table class="table table-bordered mt-3">
             <thead>
                 <tr>
-                    <th>Student</th>
-                    <th>Score</th>
-                    <th>Submitted On</th>
-                    <th>Attempts</th>
+                    <th>@Localizer["Student"]</th>
+                    <th>@Localizer["Score"]</th>
+                    <th>@Localizer["SubmittedOn"]</th>
+                    <th>@Localizer["Attempts"]</th>
                 </tr>
             </thead>
             <tbody>
@@ -90,7 +91,7 @@
                     <tr>
                         <td>@(student?.DisplayName ?? student?.UserName ?? "Unknown")</td>
                         <td>@(submittedAttempt?.Score ?? 0)</td>
-                        <td>@(submittedAttempt?.SubmittedTimeUtc?.ToLocalTime().ToString("g") ?? "Not submitted")</td>
+                        <td>@(submittedAttempt?.SubmittedTimeUtc?.ToLocalTime().ToString("g") ?? Localizer["NotSubmitted"].Value)</td>
                         <td>@group.Count()</td>
                     </tr>
                 }
@@ -98,8 +99,9 @@
         </table>
     }
 
-    <a href="/Exams/MyExams" class="btn btn-outline-secondary mt-4">← Back to Exams</a>
+    <a href="/Exams/MyExams" class="btn btn-outline-secondary mt-4">@Localizer["BackToExams"]</a>
 </div>
+
 
 
 

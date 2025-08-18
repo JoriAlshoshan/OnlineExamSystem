@@ -241,3 +241,45 @@ body {
     margin-top: 25px;
     color: #388E3C !important;
 }
+
+
+.navbar-nav.ms-auto {
+    display: flex !important;
+    align-items: center;
+}
+
+html[dir="ltr"] .navbar-nav.ms-auto {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    justify-content: flex-end !important;
+    text-align: left;
+}
+
+html[dir="rtl"] .navbar-nav.ms-auto {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+    justify-content: flex-start !important;
+    text-align: right;
+}
+
+#sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+html[dir="rtl"] #sidebar.collapsed {
+    transform: translateX(100%);
+}
+html[dir="rtl"] .toggle-btn {
+    right: 20px;
+    left: auto !important;
+}
+
+html[dir="rtl"] .account-box {
+    text-align: right;
+}
+
+html[dir="rtl"] .form-label,
+html[dir="rtl"] .form-control,
+html[dir="rtl"] .text-danger {
+    text-align: right;
+}

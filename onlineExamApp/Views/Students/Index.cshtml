@@ -1,20 +1,18 @@
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Student Page";
+    ViewData["Title"] = Localizer["StudentPage"];
 }
+
 <head>
     <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
-
 </head>
-
-
-
 
 <div class="container mt-5">
     <div class="text-center">
-        <h1 class="mb-4 display-4 fw-bold">Welcome to Your Student Portal </h1>
+        <h1 class="mb-4 display-4 fw-bold">@Localizer["WelcomeToStudentPortal"]</h1>
         <p class="lead">
-            This is your all-in-one academic platform, designed to make your learning journey easier and more inspiring.<br />
-            From here, you can access exams, review your results, and track your progress anytime, anywhere.
+            @Localizer["StudentPortalDescription"]
         </p>
     </div>
 
@@ -22,11 +20,11 @@
         <div class="col-md-5 mb-4">
             <div class="card h-100 border-0 shadow-lg">
                 <div class="card-body text-center">
-                    <h4 class="card-title mb-3">📝 Available Exams</h4>
+                    <h4 class="card-title mb-3">📝 @Localizer["AvailableExams"]</h4>
                     <p class="card-text text-muted">
-                        Discover exams that are ready to take. Challenge yourself and aim for excellence!
+                        @Localizer["AvailableExamsDescription"]
                     </p>
-                    <a href="/Students/AvailableExams" class="btn btn-outline-primary">Start Now</a>
+                    <a href="/Students/AvailableExams" class="btn btn-outline-primary">@Localizer["StartNow"]</a>
                 </div>
             </div>
         </div>
@@ -34,11 +32,11 @@
         <div class="col-md-5 mb-4">
             <div class="card h-100 border-0 shadow-lg">
                 <div class="card-body text-center">
-                    <h4 class="card-title mb-3">📈 My Results</h4>
+                    <h4 class="card-title mb-3">📈 @Localizer["MyResults"]</h4>
                     <p class="card-text text-muted">
-                        Review your past performance, identify your strengths, and keep improving with every step.
+                        @Localizer["MyResultsDescription"]
                     </p>
-                    <a href="/Students/MyResults" class="btn btn-outline-success">View Results</a>
+                    <a href="/Students/MyResults" class="btn btn-outline-success">@Localizer["ViewResults"]</a>
                 </div>
             </div>
         </div>
@@ -46,7 +44,7 @@
 
     <div class="text-center mt-5">
         <p class="fst-italic">
-            "A journey of a thousand miles begins with a single step... and we're here to make every step count."
+            @Localizer["StudentPortalQuote"]
         </p>
     </div>
 </div>

@@ -1,4 +1,5 @@
 @model onlineExamApp.Models.ApplicationUser
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Edit Profile";
@@ -9,7 +10,7 @@
 </head>
 
 <div class="container mt-4">
-    <h2 class="mb-4">Edit Profile</h2>
+    <h2 class="mb-4">@Localizer["EditProfile"]</h2>
 
     @if (TempData["Error"] != null)
     {
@@ -33,10 +34,10 @@
 
                     <form asp-action="UploadImage" method="post" enctype="multipart/form-data">
                         <div class="mb-3 text-start">
-                            <label class="form-label">Profile Image (.jpg/.png, max 2MB)</label>
+                            <label class="form-label">@Localizer["ProfileImageLabel"]</label>
                             <input type="file" name="profileImage" accept=".jpg,.jpeg,.png" class="form-control" required />
                         </div>
-                        <button type="submit" class="btn btn-sm btn-warning w-100">Upload Image</button>
+                        <button type="submit" class="btn btn-sm btn-warning w-100">@Localizer["UploadImage"]</button>
                     </form>
                 </div>
             </div>
@@ -47,39 +48,39 @@
                 <div class="card-body">
                     <form asp-action="EditProfile" method="post">
                         <div class="mb-3">
-                            <label asp-for="DisplayName" class="form-label">Full Name</label>
+                            <label asp-for="DisplayName" class="form-label">@Localizer["FullName"]</label>
                             <input asp-for="DisplayName" class="form-control" />
                             <span asp-validation-for="DisplayName" class="text-danger small"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="Email" class="form-label">Email</label>
+                            <label asp-for="Email" class="form-label">@Localizer["Email"]</label>
                             <input asp-for="Email" class="form-control" disabled />
                             <span asp-validation-for="Email" class="text-danger small"></span>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">University</label>
+                            <label class="form-label">@Localizer["University"]</label>
                             <input type="text" class="form-control" value="@Model.University" disabled />
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">New Password</label>
+                            <label class="form-label">@Localizer["NewPassword"]</label>
                             <input type="password" name="NewPassword" class="form-control" minlength="6" />
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label">Confirm Password</label>
+                            <label class="form-label">@Localizer["ConfirmPassword"]</label>
                             <input type="password" name="ConfirmPassword" class="form-control" minlength="6" />
                         </div>
 
                         <div class="alert alert-secondary small">
-                            Leave password fields empty if you don't want to change your password.
+                            @Localizer["PasswordHelp"]
                         </div>
 
                         <div class="text-end mt-3">
-                            <button type="submit" class="btn btn-success me-2">Save Changes</button>
-                            <a href="@ViewBag.ReturnUrl" class="btn btn-secondary">Back</a>
+                            <button type="submit" class="btn btn-success me-2">@Localizer["SaveChanges"]</button>
+                            <a href="@ViewBag.ReturnUrl" class="btn btn-secondary">@Localizer["Back"]</a>
                         </div>
                     </form>
                 </div>

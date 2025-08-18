@@ -1,32 +1,36 @@
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Educator Dashboard";
+    ViewData["Title"] = Localizer["EducatorDashboard"];
 }
+
 <head>
     <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
 </head>
 
 <div class="container mt-5">
     <div class="text-center">
-        <h1 class="mb-4 display-4 fw-bold">Welcome to Your Educator Portal </h1>
+        <h1 class="mb-4 display-4 fw-bold">@Localizer["WelcomeEducatorTitle"]</h1>
         <p class="lead">
-            This is your centralized platform to create exams, add questions, and monitor student progress.<br />
-            Manage your courses efficiently and empower your students to succeed.
+            @Localizer["WelcomeEducatorText"]
         </p>
     </div>
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-6 mb-4">
             <div class="card h-100 border-0 shadow-lg p-4">
-                <h4 class="card-title mb-3 text-center">💡 Tips Before Creating Exams</h4>
-                <ul class="text-start text-muted" style="list-style: inside disc;">
-                    <li>Design exams that align with your course objectives.</li>
-                    <li>Include varied question types to assess different skills.</li>
-                    <li>Review student results regularly to adapt your teaching.</li>
-                    <li>Keep questions clear and concise for better understanding.</li>
+                <h4 class="card-title mb-3 text-center">@Localizer["TipsTitle"]</h4>
+                <ul class="tip-list text-muted">
+                    <li>@Localizer["Tip1"]</li>
+                    <li>@Localizer["Tip2"]</li>
+                    <li>@Localizer["Tip3"]</li>
+                    <li>@Localizer["Tip4"]</li>
                 </ul>
+
+
                 <div class="d-grid mt-4">
-                    <a href="/Exams/Create" class="btn btn-success btn-lg mb-3">➕ Create New Exam</a>
-                    <a href="/Exams/MyExams" class="btn btn-outline-success btn-lg">📚 View My Exams</a>
+                    <a href="/Exams/Create" class="btn btn-success btn-lg mb-3">➕@Localizer["CreateNewExam"]</a>
+                    <a href="/Exams/MyExams" class="btn btn-outline-success btn-lg">📚@Localizer["ViewMyExams"]</a>
                 </div>
             </div>
         </div>
@@ -34,11 +38,10 @@
 
     <div class="text-center mt-5">
         <p class="fst-italic text-muted">
-            "Great teachers inspire not by knowledge alone, but by empowering every student to grow and achieve."
+            @Localizer["EducatorQuote"]
         </p>
     </div>
 </div>
-
 
 
 

@@ -1,33 +1,35 @@
 @model onlineExamApp.ViewModel.EditUserViewModel
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Edit User";
+    ViewData["Title"] = Localizer["EditUser"];
 }
 
-<h2 class="mb-4">Edit User - @Model.DisplayName</h2>
+<h2 class="mb-4">@Localizer["EditUser"] - @Model.DisplayName</h2>
 
 <form asp-action="EditUser" method="post" class="needs-validation" novalidate>
     <input type="hidden" asp-for="Id" />
 
     <div class="mb-3">
-        <label asp-for="DisplayName" class="form-label"></label>
+        <label asp-for="DisplayName" class="form-label">@Localizer["DisplayName"]</label>
         <input asp-for="DisplayName" class="form-control" />
         <span asp-validation-for="DisplayName" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Email" class="form-label"></label>
+        <label asp-for="Email" class="form-label">@Localizer["Email"]</label>
         <input asp-for="Email" class="form-control" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="University" class="form-label">University</label>
+        <label asp-for="University" class="form-label">@Localizer["University"]</label>
         <input asp-for="University" class="form-control" />
         <span asp-validation-for="University" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Roles</label>
+        <label class="form-label">@Localizer["Roles"]</label>
         <div>
             @foreach (var role in Model.AllRoles)
             {
@@ -39,11 +41,11 @@
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
-    <a asp-action="ManageUsers" class="btn btn-secondary ms-2">Cancel</a>
+    <button type="submit" class="btn btn-primary">@Localizer["Save"]</button>
+    <a asp-action="ManageUsers" class="btn btn-secondary ms-2">@Localizer["Cancel"]</a>
 </form>
-
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
