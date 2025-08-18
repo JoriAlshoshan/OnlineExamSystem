@@ -1,3 +1,4 @@
+using onlineExamApp.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace onlineExamApp.Models
@@ -17,7 +18,7 @@ namespace onlineExamApp.Models
         public DateTime EndTimeUtc { get; set; }
 
         public string? Subject { get; set; }
-        public string? Difficulty { get; set; }
+        public DifficultyLevel? Difficulty { get; set; }
 
         public bool IsPublished { get; set; } = false;
 

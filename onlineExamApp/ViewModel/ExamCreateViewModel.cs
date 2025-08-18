@@ -1,3 +1,4 @@
+using onlineExamApp.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace onlineExamApp.ViewModel
@@ -10,7 +11,7 @@ namespace onlineExamApp.ViewModel
         [Required] public DateTime EndTimeUtc { get; set; }
         [Required] public int DurationMinutes { get; set; }
         public string? Subject { get; set; }
-        public string? Difficulty { get; set; }
+        public DifficultyLevel Difficulty { get; set; }
 
         [Range(1, 10, ErrorMessage = "Attempts must be between 1 and 10")]
         public int MaxAttempts { get; set; } = 1;
