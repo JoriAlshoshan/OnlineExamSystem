@@ -1,0 +1,276 @@
+@model onlineExamApp.Models.Exam
+
+@{
+    ViewData["Title"] = "أداء الاختبار - " + Model.Title;
+}
+
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+
+<div class="container mt-4" style="direction: rtl;">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0" style="text-align: right;">@Model.Title <span id="scoreBadge"></span></h2>
+        <div id="retryContainer"></div>
+    </div>
+    <p style="text-align: right;">@Model.Description</p>
+
+    <form id="examForm">
+        @Html.AntiForgeryToken()
+    </form>
+
+    <div class="my-3" style="text-align: right;">
+        <strong>الوقت المتبقي: <span id="timeLeft">--:--:--</span></strong>
+    </div>
+
+    <div class="mb-3 text-end">
+        <button id="startBtn" class="btn btn-success">ابدأ الاختبار</button>
+        <button id="submitBtn" class="btn btn-primary" disabled>إرسال</button>
+    </div>
+
+    <hr />
+
+    <div id="questionsArea" style="display:none;">
+        @foreach (var q in Model.Questions)
+        {
+            <div class="questionCard card mb-3 p-3" data-qid="@q.Id" style="text-align: right;">
+                <h5>سؤال: @q.Text <small>(@q.Points نقاط)</small></h5>
+                <div>
+                    @if (q.Type == onlineExamApp.Models.QuestionType.MCQ)
+                    {
+                        foreach (var o in q.Options)
+                        {
+                            <div class="form-check d-flex align-items-center" style="flex-direction: row-reverse; justify-content: flex-start; margin-bottom: 0.5rem;">
+                                <input class="form-check-input" type="radio" name="q_@q.Id" value="@o.Id" id="option_@o.Id" />
+                                <label class="form-check-label" for="option_@o.Id" style="margin-left: 8px;">@o.Text</label>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        var trueOption = q.Options.FirstOrDefault(o => o.Text.ToLower().Contains("true"));
+                        var falseOption = q.Options.FirstOrDefault(o => o.Text.ToLower().Contains("false"));
+                        <div class="form-check d-flex align-items-center" style="flex-direction: row-reverse; justify-content: flex-start; margin-bottom: 0.5rem;">
+                            <input class="form-check-input" type="radio" name="q_@q.Id" value="@trueOption?.Id" id="true_@q.Id" />
+                            <label class="form-check-label" for="true_@q.Id" style="margin-left: 8px;">صح</label>
+                        </div>
+                        <div class="form-check d-flex align-items-center" style="flex-direction: row-reverse; justify-content: flex-start; margin-bottom: 0.5rem;">
+                            <input class="form-check-input" type="radio" name="q_@q.Id" value="@falseOption?.Id" id="false_@q.Id" />
+                            <label class="form-check-label" for="false_@q.Id" style="margin-left: 8px;">خطأ</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <text>
+        <script>
+            let attemptId = null;
+            let endTime = null;
+            let timerInterval = null;
+            let autosaveInterval = null;
+
+            const examId = @Model.Id;
+            const token = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+            document.getElementById('startBtn').addEventListener('click', async () => {
+                const formData = new FormData();
+                formData.append('examId', examId);
+
+                const res = await fetch('/Exams/StartAttempt', {
+                    method: 'POST',
+                    headers: { 'RequestVerificationToken': token },
+                    body: formData
+                });
+
+                if (!res.ok) {
+                    const errorText = await res.text();
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'لا يمكن بدء الاختبار',
+                        text: "لقد وصلت إلى الحد الأقصى المسموح به من المحاولات"
+                    });
+                    return;
+                }
+
+                const data = await res.json();
+                attemptId = data.attemptId;
+                endTime = new Date(data.endTimeUtc);
+
+                Swal.fire({
+                    icon: 'success',
+                    title: 'بدأ الاختبار!',
+                    text: `بالتوفيق! لديك ${data.remainingAttempts} محاولة متبقية بعد هذه.`
+                });
+
+                document.getElementById('questionsArea').style.display = 'block';
+                document.getElementById('submitBtn').disabled = false;
+                document.getElementById('startBtn').disabled = true;
+
+                startTimer();
+                startAutoSave();
+            });
+
+            function startTimer() {
+                updateTimer();
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+
+            function updateTimer() {
+                const now = new Date();
+                const diff = endTime - now;
+
+                if (diff <= 0) {
+                    document.getElementById('timeLeft').innerText = '00:00:00';
+                    clearInterval(timerInterval);
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'انتهى الوقت!',
+                        text: 'سيتم إرسال الاختبار تلقائيًا.'
+                    });
+                    submitAttempt();
+                    return;
+                }
+
+                const hrs = Math.floor(diff / 3600000);
+                const mins = Math.floor((diff % 3600000) / 60000);
+                const secs = Math.floor((diff % 60000) / 1000);
+                document.getElementById('timeLeft').innerText =
+                    `${String(hrs).padStart(2, '0')}:${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+            }
+
+            function collectAnswers() {
+                const answers = [];
+                document.querySelectorAll('.questionCard').forEach(card => {
+                    const qid = parseInt(card.getAttribute('data-qid'));
+                    const selected = card.querySelector(`input[name="q_${qid}"]:checked`);
+                    if (selected)
+                        answers.push({ questionId: qid, selectedOptionId: parseInt(selected.value) });
+                });
+                return answers;
+            }
+
+            function startAutoSave() {
+                autosaveInterval = setInterval(async () => {
+                    if (!attemptId) return;
+                    const dto = { attemptId, answers: collectAnswers() };
+                    await fetch('/Exams/SavePartialAnswers', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'RequestVerificationToken': token
+                        },
+                        body: JSON.stringify(dto)
+                    });
+                    console.log('تم الحفظ التلقائي في', new Date().toISOString());
+                }, 20000);
+            }
+
+            document.getElementById('submitBtn').addEventListener('click', () => {
+                Swal.fire({
+                    title: 'هل أنت متأكد؟',
+                    text: "بعد الإرسال، لن يمكنك إعادة أداء هذا الاختبار.",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonText: 'نعم، أرسل',
+                    cancelButtonText: 'إلغاء'
+                }).then(async (result) => {
+                    if (result.isConfirmed) {
+                        await submitAttempt();
+                    }
+                });
+            });
+
+            async function submitAttempt() {
+                if (!attemptId) return;
+
+                const dto = { attemptId, answers: collectAnswers() };
+
+                const res = await fetch('/Exams/SubmitAttempt', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'RequestVerificationToken': token
+                    },
+                    body: JSON.stringify(dto)
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'تم الإرسال!',
+                        text: `نتيجتك: ${data.score} من ${data.totalScore}`
+                    }).then(() => {
+                        const scoreBadge = document.getElementById('scoreBadge');
+                        if (scoreBadge) {
+                            scoreBadge.className = 'badge bg-info ms-3';
+                            scoreBadge.innerText = `النتيجة: ${data.score} / ${data.totalScore}`;
+                        }
+
+                        data.answers.forEach(ans => {
+                            const card = document.querySelector(`.questionCard[data-qid="${ans.questionId}"]`);
+                            if (!card) return;
+                            const inputs = card.querySelectorAll(`input[name="q_${ans.questionId}"]`);
+
+                            inputs.forEach(input => {
+                                const label = input.nextElementSibling;
+                                if (!label) return;
+
+                                if (parseInt(input.value) === ans.selectedOptionId) {
+                                    if (ans.isCorrect) {
+                                        input.classList.add("border-success");
+                                        label.style.color = 'green';
+                                        label.innerHTML += ' <span class="badge bg-success">صحيح</span>';
+                                    } else {
+                                        input.classList.add("border-danger");
+                                        label.style.color = 'red';
+                                        label.innerHTML += ' <span class="badge bg-danger">خطأ</span>';
+                                    }
+                                }
+                                input.disabled = true;
+                            });
+                        });
+
+                        clearInterval(timerInterval);
+                        clearInterval(autosaveInterval);
+                        document.getElementById('submitBtn').disabled = true;
+
+                        const retryContainer = document.getElementById('retryContainer');
+                        if (retryContainer) {
+                            retryContainer.innerHTML = '';
+
+                            if (data.remainingAttempts > 0) {
+                                const retryBtn = document.createElement('button');
+                                retryBtn.textContent = `إعادة الاختبار (${data.remainingAttempts} محاولات متبقية)`;
+                                retryBtn.className = 'btn btn-warning';
+
+                                retryBtn.addEventListener('click', () => {
+                                    location.reload();
+                                });
+
+                                retryContainer.appendChild(retryBtn);
+                            }
+                        }
+                    });
+                } else {
+                    const errText = await res.text();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'خطأ في الإرسال',
+                        text: errText
+                    });
+                }
+            }
+        </script>
+    </text>
+}
+
+

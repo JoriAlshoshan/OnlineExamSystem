@@ -1,7 +1,11 @@
+@using System.Globalization
+
 @model List<onlineExamApp.Models.Exam>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 
 @{
-    ViewData["Title"] = "Available Exams";
+    ViewData["Title"] = Localizer["AvailableExams"];
+    var isArabic = CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "ar";
 }
 
 <head>
@@ -9,12 +13,12 @@
 </head>
 
 <div class="container mt-4">
-    <h2>Available Exams</h2>
+    <h2>@Localizer["AvailableExams"]</h2>
 
     @if (!Model.Any())
     {
         <div class="alert alert-info" style="background-color: #f5f1e9; color: #5e4b3c; border-color: #a68c6d;">
-            No exams are currently available.
+            @Localizer["NoExamsAvailable"]
         </div>
     }
     else
@@ -27,9 +31,13 @@
                         <strong>@exam.Title</strong> - @exam.Subject <br />
                         <small>@exam.StartTimeUtc.ToLocalTime().ToString("g") → @exam.EndTimeUtc.ToLocalTime().ToString("g")</small>
                     </span>
-                    <a href="/Exams/Take/@exam.Id" class="btn btn-sm btn-outline-primary">Take Exam</a>
+                    <a href="@(isArabic ? $"/Exams/TakeAr/{exam.Id}" : $"/Exams/Take/{exam.Id}")" class="btn btn-sm btn-outline-primary">
+                        @Localizer["TakeExam"]
+                    </a>
                 </li>
             }
         </ul>
     }
 </div>
+
+

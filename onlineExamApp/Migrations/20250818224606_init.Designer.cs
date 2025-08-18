@@ -12,8 +12,8 @@ using onlineExamApp.Data;
 namespace onlineExamApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250817111426_deleteUnivTable")]
-    partial class deleteUnivTable
+    [Migration("20250818224606_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -247,8 +247,8 @@ namespace onlineExamApp.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Difficulty")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Difficulty")
+                        .HasColumnType("int");
 
                     b.Property<int>("DurationMinutes")
                         .HasColumnType("int");

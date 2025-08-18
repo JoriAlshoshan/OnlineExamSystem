@@ -1,25 +1,29 @@
 @model List<onlineExamApp.Models.ApplicationUser>
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
 @{
-    ViewData["Title"] = "Manage Users";
+    ViewData["Title"] = Localizer["ManageUsers"];
     var userRoles = ViewData["UserRoles"] as Dictionary<string, IList<string>>;
 }
+
 <head>
     <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
 </head>
 
-<h2 class="mb-4">Manage Users</h2>
+<h2 class="mb-4">@Localizer["ManageUsers"]</h2>
+
 <div class="mb-3 text-end">
-    <a class="btn btn-success" href="@Url.Action("CreateUser", "Admin")">+ Add New User</a>
+    <a class="btn btn-success" href="@Url.Action("CreateUser", "Admin")">@Localizer["AddNewUser"]</a>
 </div>
 
 <table class="table table-striped table-bordered align-middle table-green">
     <thead>
         <tr>
-            <th class="nowrap-cell" style="width: 220px;">Display Name</th>
-            <th>Email</th>
-            <th>University</th>
-            <th>Roles</th>
-            <th style="width: 150px;">Actions</th>
+            <th class="nowrap-cell" style="width: 220px;">@Localizer["DisplayName"]</th>
+            <th>@Localizer["Email"]</th>
+            <th>@Localizer["University"]</th>
+            <th>@Localizer["Roles"]</th>
+            <th style="width: 150px;">@Localizer["Actions"]</th>
         </tr>
     </thead>
     <tbody>
@@ -28,11 +32,11 @@
             <tr>
                 <td class="nowrap-cell text-truncate">@user.DisplayName</td>
                 <td>@user.Email</td>
-                <td>@(user.University ?? "N/A")</td>
+                <td>@(user.University ?? Localizer["N/A"].Value)</td>
                 <td>@string.Join(", ", userRoles[user.Id])</td>
                 <td>
-                    <a class="btn btn-sm btn-primary me-1" href="@Url.Action("EditUser", "Admin", new { id = user.Id })">Edit</a>
-                    <button class="btn btn-sm btn-danger" onclick="confirmDelete('@user.Id', '@user.DisplayName')">Delete</button>
+                    <a class="btn btn-sm btn-primary me-1" href="@Url.Action("EditUser", "Admin", new { id = user.Id })">@Localizer["Edit"]</a>
+                    <button class="btn btn-sm btn-danger" onclick="confirmDelete('@user.Id', '@user.DisplayName')">@Localizer["Delete"]</button>
                 </td>
             </tr>
         }
@@ -43,16 +47,18 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
+        const localizerDeleteUserConfirm = '@Localizer["DeleteUserConfirm"]';
+
         function confirmDelete(userId, displayName) {
             Swal.fire({
-                title: `Delete user "${displayName}"?`,
-                text: "This action cannot be undone!",
+                title: `${localizerDeleteUserConfirm} ${displayName}?`,
+                text: "@Localizer["DeleteUserWarning"]",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#198754',
-                confirmButtonText: 'Yes, delete!',
-                cancelButtonText: 'Cancel'
+                confirmButtonText: '@Localizer["YesDelete"]',
+                cancelButtonText: '@Localizer["Cancel"]'
             }).then((result) => {
                 if (result.isConfirmed) {
                     window.location.href = '@Url.Action("DeleteUser", "Admin")/' + userId;
@@ -66,14 +72,14 @@
         <script>
             Swal.fire({
                 icon: 'success',
-                title: 'Success',
+                title: '@Localizer["Success"]',
                 text: '@TempData["Success"]',
                 confirmButtonColor: '#198754'
             });
         </script>
     }
-
 }
+
 
 
 

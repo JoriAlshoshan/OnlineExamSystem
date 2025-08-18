@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace onlineExamApp.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -172,7 +172,7 @@ namespace onlineExamApp.Migrations
                     StartTimeUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndTimeUtc = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Subject = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Difficulty = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Difficulty = table.Column<int>(type: "int", nullable: true),
                     IsPublished = table.Column<bool>(type: "bit", nullable: false),
                     MaxAttempts = table.Column<int>(type: "int", nullable: false)
                 },

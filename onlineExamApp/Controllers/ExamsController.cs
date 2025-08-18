@@ -84,12 +84,12 @@ namespace onlineExamApp.Controllers
 
 
         [Authorize(Roles = "Educator,Admin")]
-        public async Task<IActionResult> ManageQuestions(int examId)
+        public async Task<IActionResult> ManageQuestions(int Id)
         {
             var exam = await _db.Exams.Include(e => e.Questions).ThenInclude(q => q.Options)
-                .FirstOrDefaultAsync(e => e.Id == examId);
+                .FirstOrDefaultAsync(e => e.Id == Id);
             if (exam == null) return NotFound();
-            ViewBag.ExamId = examId;
+            ViewBag.ExamId = Id;
             return View(exam);
         }
 
@@ -300,7 +300,7 @@ namespace onlineExamApp.Controllers
             }
 
             _db.SaveChanges();
-            return RedirectToAction("ManageQuestions", new { examId = q.ExamId });
+            return RedirectToAction("ManageQuestions", new { Id = q.ExamId });
         }
 
 
@@ -331,7 +331,7 @@ namespace onlineExamApp.Controllers
             _db.Questions.Remove(question);
             _db.SaveChanges();
 
-            return RedirectToAction("ManageQuestions", new { examId = question.ExamId });
+            return RedirectToAction("ManageQuestions", new { Id = question.ExamId });
         }
 
         [Authorize(Roles = "Educator")]
@@ -358,17 +358,26 @@ namespace onlineExamApp.Controllers
             if (exam == null)
                 return NotFound();
 
-            foreach (var question in exam.Questions)
+            try
             {
-                _db.Options.RemoveRange(question.Options);
+                foreach (var question in exam.Questions)
+                {
+                    _db.Options.RemoveRange(question.Options);
+                }
+
+                _db.Questions.RemoveRange(exam.Questions);
+                _db.Exams.Remove(exam);
+                await _db.SaveChangesAsync();
+
+                return RedirectToAction(nameof(MyExams));
             }
-            _db.Questions.RemoveRange(exam.Questions);
-
-            _db.Exams.Remove(exam);
-            await _db.SaveChangesAsync();
-
-            return RedirectToAction(nameof(MyExams));
+            catch (DbUpdateException)
+            {
+                TempData["DeleteError"] = "Unable to delete this exam as it is associated with student attempts.";
+                return RedirectToAction(nameof(MyExams));
+            }
         }
+
 
         [Authorize(Roles = "Student")]
         public async Task<IActionResult> Take(int id)
@@ -382,6 +391,20 @@ namespace onlineExamApp.Controllers
                 return NotFound();
 
             return View("Take", exam);
+        }
+
+        [Authorize(Roles = "Student")]
+        public async Task<IActionResult> TakeAr(int id)
+        {
+            var exam = await _db.Exams
+                .Include(e => e.Questions)
+                    .ThenInclude(q => q.Options)
+                .FirstOrDefaultAsync(e => e.Id == id);
+
+            if (exam == null)
+                return NotFound();
+
+            return View("TakeAr", exam);
         }
 
     }

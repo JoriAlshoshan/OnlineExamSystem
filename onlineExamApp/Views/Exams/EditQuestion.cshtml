@@ -1,12 +1,18 @@
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
 @model onlineExamApp.Models.Question
+
+
 @{
-    ViewData["Title"] = "Edit Question";
+    ViewData["Title"] = Localizer["EditQuestion"];
 }
+
 <head>
     <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
 </head>
+
 <div class="container">
-    <h2>Edit Question</h2>
+    <h2>@Localizer["EditQuestion"]</h2>
 
     <form asp-action="EditQuestion" method="post">
         @Html.AntiForgeryToken()
@@ -14,15 +20,16 @@
         <input type="hidden" name="ExamId" value="@Model.ExamId" />
 
         <div class="form-group mb-3">
-            <label>Question Text</label>
+            <label>@Localizer["QuestionText"]</label>
             <input name="Text" value="@Model.Text" class="form-control" required />
         </div>
+
         <div class="form-group mb-3">
-            <label>Points</label>
+            <label>@Localizer["Points"]</label>
             <input name="Points" type="number" value="@Model.Points" class="form-control" required />
         </div>
 
-        <h5>Options</h5>
+        <h5>@Localizer["Options"]</h5>
         <div id="options-container" class="mb-3">
             @for (int i = 0; i < Model.Options.Count; i++)
             {
@@ -31,16 +38,16 @@
                     <input type="text" name="Options[@i].Text" value="@Model.Options[i].Text" class="form-control me-2" required />
                     <input type="hidden" class="isCorrect" name="Options[@i].IsCorrect" value="@(Model.Options[i].IsCorrect ? "true" : "false")" />
                     <label class="form-check-label me-2">
-                        <input type="radio" name="correctOption" class="form-check-input me-1" value="@i" @(Model.Options[i].IsCorrect ? "checked" : "") />Correct
+                        <input type="radio" name="correctOption" class="form-check-input me-1" value="@i" @(Model.Options[i].IsCorrect ? "checked" : "") />  @Localizer["Correct"]
                     </label>
-                    <button type="button" class="btn btn-danger btn-sm remove-option">Remove</button>
+                    <button type="button" class="btn btn-danger btn-sm remove-option">@Localizer["Remove"]</button>
                 </div>
             }
         </div>
 
-        <button type="button" id="add-option" class="btn btn-outline-main btn-sm mb-3">Add Option</button><br />
-        <button type="submit" class="btn btn-main">Save</button>
-        <a href="/Exams/ManageQuestions/@Model.ExamId" class="btn btn-outline-main ms-2">Cancel</a>
+        <button type="button" id="add-option" class="btn btn-outline-main btn-sm mb-3">@Localizer["AddOption"]</button><br />
+        <button type="submit" class="btn btn-main">@Localizer["Save"]</button>
+        <a href="/Exams/ManageQuestions?Id=@Model.ExamId" class="btn btn-outline-main ms-2">@Localizer["Cancel"]</a>
     </form>
 </div>
 
@@ -58,9 +65,9 @@
                 <input type="text" name="Options[${optionIndex}].Text" class="form-control me-2" placeholder="Option text" required />
                 <input type="hidden" class="isCorrect" name="Options[${optionIndex}].IsCorrect" value="false" />
                 <label class="form-check-label me-2">
-                    <input type="radio" name="correctOption" class="form-check-input me-1" value="${optionIndex}" />Correct
+                            <input type="radio" name="correctOption" class="form-check-input me-1" value="${optionIndex}" />  ${"@Localizer["Correct"]".replace(/"/g, '\\"')}
                 </label>
-                <button type="button" class="btn btn-danger btn-sm remove-option">Remove</button>
+                        <button type="button" class="btn btn-danger btn-sm remove-option">${"@Localizer["Remove"]".replace(/"/g, '\\"')}</button>
             `;
             container.appendChild(div);
             optionIndex++;
@@ -89,6 +96,7 @@
                     h.value = (i == idx) ? 'true' : 'false';
                 });
             }
-        });
+
     </script>
 }
+

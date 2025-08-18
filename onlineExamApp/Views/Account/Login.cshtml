@@ -1,5 +1,7 @@
 @using onlineExamApp.ViewModel
 @model LoginViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 @{
     ViewData["Title"] = "Login";
@@ -8,7 +10,7 @@
 
 <div class="account-container">
     <div class="account-box shadow-sm">
-        <h2 class="account-title">Welcome Back</h2>
+        <h2 class="account-title">@Localizer["WelcomeBack"]</h2>
 
         @if (TempData["Message"] != null)
         {
@@ -22,11 +24,11 @@
 
             <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-            <label asp-for="Email" class="form-label">Email</label>
+            <label asp-for="Email" class="form-label">@Localizer["Email"]</label>
             <input asp-for="Email" class="form-control" placeholder="example@domain.com" />
             <span asp-validation-for="Email" class="text-danger"></span>
 
-            <label asp-for="Password" class="form-label mt-3">Password</label>
+            <label asp-for="Password" class="form-label mt-3">@Localizer["Password"]</label>
             <input asp-for="Password" class="form-control" type="password" placeholder="********" />
             <span asp-validation-for="Password" class="text-danger"></span>
 
@@ -34,23 +36,23 @@
                 <div class="form-check">
                     <input asp-for="RememberMe" class="form-check-input" id="rememberMe" />
                     <label class="form-check-label ms-1" for="rememberMe">
-                        Remember me
+                        @Localizer["RememberMe"]
                     </label>
                 </div>
                 <a asp-controller="Account" asp-action="VerifyEmail" class="forgot-link">
-                    Forgot Password?
+                    @Localizer["ForgotPassword"]
                 </a>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100 btn-lg">Login</button>
+            <button type="submit" class="btn btn-primary w-100 btn-lg">@Localizer["Login"]</button>
 
             <div class="text-center mt-4">
                 <p>
-                    Don't have an account?
-                    <a asp-controller="Account" asp-action="Register" class="link-primary">Register</a>
+                    @Localizer["NoAccount"]
+                    <a asp-controller="Account" asp-action="Register" class="link-primary">@Localizer["Register"]</a>
                 </p>
                 <a asp-controller="Account" asp-action="Welcome" class="link-muted">
-                    ← Back to Home
+                    @Localizer["BackToHome"]
                 </a>
             </div>
         </form>
@@ -60,6 +62,7 @@
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
 }
+
 
 
 

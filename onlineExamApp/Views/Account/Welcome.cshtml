@@ -1,3 +1,6 @@
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 @using Microsoft.AspNetCore.Identity
 @using onlineExamApp.Models
 @inject UserManager<ApplicationUser> UserManager
@@ -12,27 +15,27 @@
     if (isAuthenticated)
     {
         var user = await UserManager.GetUserAsync(User);
-        userName = user?.DisplayName ?? "User";  
+        userName = user?.DisplayName ?? "User";
     }
 }
 
 <div class="welcome-container">
     <div class="welcome-box shadow-sm">
-        <h1 class="welcome-title">Welcome, @userName!</h1>
-        <p class="welcome-subtitle">We're glad to have you here at <strong>OnlineExam</strong>.</p>
+        <h1 class="welcome-title">@Localizer["Welcome", userName]</h1>
+        <p class="welcome-subtitle">@Localizer["WelcomeSubtitle"]</p>
 
         @if (!isAuthenticated)
         {
             <p class="lead text-muted mt-4">
-                Explore our platform designed to help you prepare, practice, and perfect your exam performance.
-                You can browse through our features, take mock exams, or learn more about how we support students and educators.
+                @Localizer["WelcomeGuest"]
             </p>
         }
         else
         {
             <p class="text-success mt-4 fw-semibold">
-                You're logged in and ready to access all features. Head over to your dashboard to begin your exam journey.
+                @Localizer["WelcomeUser"]
             </p>
         }
     </div>
 </div>
+

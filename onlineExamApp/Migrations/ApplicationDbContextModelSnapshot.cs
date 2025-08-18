@@ -244,8 +244,8 @@ namespace onlineExamApp.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Difficulty")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("Difficulty")
+                        .HasColumnType("int");
 
                     b.Property<int>("DurationMinutes")
                         .HasColumnType("int");
