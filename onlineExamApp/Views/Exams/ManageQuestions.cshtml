@@ -5,6 +5,7 @@
 }
 <head>
     <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
 <div class="container">
     <h2>Questions for: <span class="text-success">@Model.Title</span></h2>
@@ -56,8 +57,7 @@
                 <option value="TrueFalse">True/False</option>
             </select>
         </div>
-        <div id="optionsContainer" class="mb-2">
-        </div>
+        <div id="optionsContainer" class="mb-2"></div>
         <button type="button" id="addOptionBtn" class="btn btn-outline-main btn-sm mb-2">Add Option</button><br />
         <button id="addQuestionBtn" type="submit" class="btn btn-main">Save Question</button>
         <a href="/Exams/MyExams" class="btn btn-outline-main ms-2">Back to My Exams</a>
@@ -111,11 +111,17 @@
 
         function addOption() {
             const c = document.createElement('div');
-            c.className = 'optionRow mb-1 d-flex align-items-center';
-            c.innerHTML = `<input class="optText form-control me-2" placeholder="Option text" style="flex:1" />
-                           <label class="form-check-label">
-                               <input class="optCorrect me-1" type="checkbox" />Correct
-                           </label>`;
+            c.className = 'optionRow mb-1 d-flex align-items-center gap-2';
+            c.innerHTML = `
+                <input class="optText form-control flex-grow-1" placeholder="Option text" />
+                <label class="form-check-label d-flex align-items-center gap-1">
+                    <input class="optCorrect" type="radio" name="correctOption" /> Correct
+                </label>
+                <button type="button" class="btn btn-outline-danger btn-sm deleteOptionBtn">
+                    <i class="bi bi-trash"></i>
+                </button>
+            `;
+            c.querySelector('.deleteOptionBtn').addEventListener('click', () => c.remove());
             optionsContainer.appendChild(c);
         }
 
@@ -165,7 +171,8 @@
                 }).filter(o => o.text);
 
                 if (options.length < 2) return showAlert('At least two options required.');
-                if (!options.some(o => o.isCorrect)) return showAlert('Please mark at least one correct option.');
+                if (!options.some(o => o.isCorrect)) return showAlert('Please mark one correct option.');
+                if (options.filter(o => o.isCorrect).length > 1) return showAlert('Only one option can be marked as correct.');
             }
 
             const payload = {
@@ -195,8 +202,3 @@
         });
     </script>
 }
-
-
-
-
-
