@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using onlineExamApp.Data;
 using onlineExamApp.Enums;
@@ -303,5 +304,8 @@ namespace onlineExamApp.Controllers
 
             return View();
         }
+
+
+  
     }
 }

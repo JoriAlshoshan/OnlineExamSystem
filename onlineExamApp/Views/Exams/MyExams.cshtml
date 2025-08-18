@@ -72,5 +72,17 @@
             });
         }
     </script>
+
+    @if (TempData["DeleteError"] != null)
+    {
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Delete Failed',
+                text: '@TempData["DeleteError"]'
+            });
+        </script>
+    }
 }
+
 

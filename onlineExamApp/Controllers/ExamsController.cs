@@ -357,17 +357,26 @@ namespace onlineExamApp.Controllers
             if (exam == null)
                 return NotFound();
 
-            foreach (var question in exam.Questions)
+            try
             {
-                _db.Options.RemoveRange(question.Options);
+                foreach (var question in exam.Questions)
+                {
+                    _db.Options.RemoveRange(question.Options);
+                }
+
+                _db.Questions.RemoveRange(exam.Questions);
+                _db.Exams.Remove(exam);
+                await _db.SaveChangesAsync();
+
+                return RedirectToAction(nameof(MyExams));
             }
-            _db.Questions.RemoveRange(exam.Questions);
-
-            _db.Exams.Remove(exam);
-            await _db.SaveChangesAsync();
-
-            return RedirectToAction(nameof(MyExams));
+            catch (DbUpdateException)
+            {
+                TempData["DeleteError"] = "Unable to delete this exam as it is associated with student attempts.";
+                return RedirectToAction(nameof(MyExams));
+            }
         }
+
 
         [Authorize(Roles = "Student")]
         public async Task<IActionResult> Take(int id)
