@@ -94,29 +94,59 @@
 
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("Student"))
             {
-                <a class="nav-link" asp-controller="Students" asp-action="index">@Localizer["Home"]</a>
-                <a class="nav-link" asp-controller="Profile" asp-action="Edit">@Localizer["Profile"]</a>
-                <a class="nav-link" asp-controller="Students" asp-action="AvailableExams">@Localizer["AvailableExams"]</a>
-                <a class="nav-link" asp-controller="Students" asp-action="MyResults">@Localizer["MyResults"]</a>
+                <a class="nav-link" asp-controller="Students" asp-action="index">
+                    <i class="bi bi-house-door me-2"></i> @Localizer["Home"]
+                </a>
+                <a class="nav-link" asp-controller="Profile" asp-action="Edit">
+                    <i class="bi bi-person-circle me-2"></i> @Localizer["Profile"]
+                </a>
+                <a class="nav-link" asp-controller="Students" asp-action="AvailableExams">
+                    <i class="bi bi-ui-checks-grid me-2"></i> @Localizer["AvailableExams"]
+                </a>
+                <a class="nav-link" asp-controller="Students" asp-action="MyResults">
+                    <i class="bi bi-bar-chart-line me-2"></i> @Localizer["MyResults"]
+                </a>
             }
 
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("Educator"))
             {
-                <a class="nav-link" asp-controller="Exams" asp-action="EducatorPage">@Localizer["Home"]</a>
-                <a class="nav-link" asp-controller="Profile" asp-action="Edit">@Localizer["Profile"]</a>
-                <a class="nav-link" asp-controller="Exams" asp-action="Create">@Localizer["CreateNewExam"]</a>
-                <a class="nav-link" asp-controller="Exams" asp-action="MyExams">@Localizer["ViewMyExams"]</a>
+                <a class="nav-link" asp-controller="Exams" asp-action="EducatorPage">
+                    <i class="bi bi-house-door me-2"></i> @Localizer["Home"]
+                </a>
+                <a class="nav-link" asp-controller="Profile" asp-action="Edit">
+                    <i class="bi bi-person-circle me-2"></i> @Localizer["Profile"]
+                </a>
+                <a class="nav-link" asp-controller="Exams" asp-action="Create">
+                    <i class="bi bi-plus-circle me-2"></i> @Localizer["CreateNewExam"]
+                </a>
+                <a class="nav-link" asp-controller="Exams" asp-action="MyExams">
+                    <i class="bi bi-folder2-open me-2"></i> @Localizer["ViewMyExams"]
+                </a>
             }
+
 
             @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
             {
-                <a class="nav-link" asp-controller="Admin" asp-action="index">@Localizer["Home"]</a>
-                <a class="nav-link" asp-controller="Profile" asp-action="Edit">@Localizer["Profile"]</a>
-                <a class="nav-link" asp-controller="Admin" asp-action="ManageUsers">@Localizer["ManageUsers"]</a>
-                <a class="nav-link" asp-controller="Admin" asp-action="ExamCompletion">@Localizer["ExamCompletionStats"]</a>
-                <a class="nav-link" asp-controller="Admin" asp-action="UniversityRanking">@Localizer["UniversityRankingTitle"]</a>
-                <a class="nav-link" asp-controller="Admin" asp-action="EducatorPerformance">@Localizer["EducatorPerformance"]</a>
+                <a class="nav-link" asp-controller="Admin" asp-action="index">
+                    <i class="bi bi-house-door me-2"></i> @Localizer["Home"]
+                </a>
+                <a class="nav-link" asp-controller="Profile" asp-action="Edit">
+                    <i class="bi bi-person-circle me-2"></i> @Localizer["Profile"]
+                </a>
+                <a class="nav-link" asp-controller="Admin" asp-action="ManageUsers">
+                    <i class="bi bi-people me-2"></i> @Localizer["ManageUsers"]
+                </a>
+                <a class="nav-link" asp-controller="Admin" asp-action="ExamCompletion">
+                    <i class="bi bi-clipboard-check me-2"></i> @Localizer["ExamCompletionStats"]
+                </a>
+                <a class="nav-link" asp-controller="Admin" asp-action="UniversityRanking">
+                    <i class="bi bi-trophy me-2"></i> @Localizer["UniversityRankingTitle"]
+                </a>
+                <a class="nav-link" asp-controller="Admin" asp-action="EducatorPerformance">
+                    <i class="bi bi-graph-up-arrow me-2"></i> @Localizer["EducatorPerformance"]
+                </a>
             }
+
         </nav>
     </div>
 
