@@ -9,6 +9,7 @@
     transition: transform 0.3s ease-in-out;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    overflow-y: auto;
 }
 
     #sidebar .nav-link {
@@ -213,6 +214,15 @@ html[dir="rtl"] .tip-list {
 
 html[dir="ltr"] .tip-list {
     text-align: left;
+}
+
+#sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
 }
 
 
