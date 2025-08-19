@@ -221,7 +221,8 @@
     "NoExamsAvailable": "لا توجد اختبارات متاحة حالياً.",
     "TakeExam": "أداء الاختبار",
     "OnlyOneOptionCorrect": "يرجى تحديد خيار واحد فقط صحيح",
-
+    "EditExam": "تعديل الاختبار",
+    "UpdateExam": "تحديث الاختبار"
 
 }
 

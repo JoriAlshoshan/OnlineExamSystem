@@ -243,7 +243,9 @@
     "Incorrect": "Incorrect",
     "Retry Exam ({0} attempts left)": "Retry Exam ({0} attempts left)",
     "Error submitting": "Error submitting",
-    "OnlyOneOptionCorrect": "Only one option can be marked as correct"
+    "OnlyOneOptionCorrect": "Only one option can be marked as correct",
+    "EditExam": "Edit Exam",
+    "UpdateExam": "Update Exam"
 }
 
 

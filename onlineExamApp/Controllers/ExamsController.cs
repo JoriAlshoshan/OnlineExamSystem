@@ -350,5 +350,66 @@ namespace onlineExamApp.Controllers
             if (exam == null) return NotFound();
             return View("TakeAr", exam);
         }
+
+
+        [Authorize(Roles = "Educator,Admin")]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var exam = await _db.Exams.FindAsync(id);
+
+            if (exam == null)
+                return NotFound();
+
+            var userId = _userManager.GetUserId(User);
+            if (exam.CreatorId != userId && !User.IsInRole("Admin"))
+                return Forbid();
+
+            var vm = new ExamCreateViewModel
+            {
+                Id = exam.Id,
+                Title = exam.Title,
+                Description = exam.Description,
+                DurationMinutes = exam.DurationMinutes,
+                StartTimeUtc = exam.StartTimeUtc,
+                EndTimeUtc = exam.EndTimeUtc,
+                Subject = exam.Subject,
+                Difficulty = exam.Difficulty.Value,
+                MaxAttempts = exam.MaxAttempts
+            };
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Educator,Admin")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(ExamCreateViewModel vm)
+        {
+            if (!ModelState.IsValid)
+                return View(vm);
+
+            var exam = await _db.Exams.FindAsync(vm.Id);
+            if (exam == null)
+                return NotFound();
+
+            var userId = _userManager.GetUserId(User);
+            if (exam.CreatorId != userId && !User.IsInRole("Admin"))
+                return Forbid();
+
+            exam.Title = vm.Title;
+            exam.Description = vm.Description;
+            exam.DurationMinutes = vm.DurationMinutes;
+            exam.StartTimeUtc = vm.StartTimeUtc;
+            exam.EndTimeUtc = vm.EndTimeUtc;
+            exam.Subject = vm.Subject;
+            exam.Difficulty = vm.Difficulty;
+            exam.MaxAttempts = vm.MaxAttempts;
+
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction("Details", new { Id = exam.Id });
+        }
+
+
     }
 }

@@ -1,0 +1,73 @@
+@model onlineExamApp.ViewModel.ExamCreateViewModel
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+@using onlineExamApp.Enums
+
+
+@{
+    ViewData["Title"] = Localizer["EditExam"];
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
+</head>
+
+<div class="container">
+    <h2>@Localizer["EditExam"]</h2>
+
+    <form asp-action="Edit" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group mb-3">
+            <label asp-for="Title">@Localizer["Title"]</label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Description">@Localizer["Description"]</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+
+        <div class="row g-3 mb-3">
+            <div class="col">
+                <label>@Localizer["StartUTC"]</label>
+                <input asp-for="StartTimeUtc" type="datetime-local" class="form-control" />
+            </div>
+            <div class="col">
+                <label>@Localizer["EndUTC"]</label>
+                <input asp-for="EndTimeUtc" type="datetime-local" class="form-control" />
+            </div>
+            <div class="col">
+                <label asp-for="DurationMinutes">@Localizer["Duration"]</label>
+                <input asp-for="DurationMinutes" type="number" min="1" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="Subject">@Localizer["Subject"]</label>
+            <input asp-for="Subject" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Difficulty" class="form-label"></label>
+            <select asp-for="Difficulty" class="form-select" asp-items="Html.GetEnumSelectList<DifficultyLevel>()">
+                <option value="">@Localizer["SelectDifficulty"]</option>
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label asp-for="MaxAttempts">@Localizer["MaxAttempts"]</label>
+            <input asp-for="MaxAttempts" type="number" min="1" class="form-control" />
+            <span asp-validation-for="MaxAttempts" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">@Localizer["UpdateExam"]</button>
+        <a href="/Exams/MyExams" class="btn btn-outline-secondary ms-2">@Localizer["BackToMyExams"]</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
