@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace onlineExamApp.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class intaialOne : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
