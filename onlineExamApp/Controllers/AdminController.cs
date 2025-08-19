@@ -123,10 +123,7 @@ namespace onlineExamApp.Controllers
 
         public async Task<IActionResult> UniversityRanking()
         {
-            var attempts = await _db.StudentExamAttempts.Include(a => a.Student).Include(a => a.Exam).ThenInclude(e => e.Questions).Where(a => a.SubmittedTimeUtc != null).ToListAsync();
-            var bestAttempts = attempts.GroupBy(a => new { a.StudentId, a.ExamId }).Select(g => g.OrderByDescending(a => a.Score).First()).ToList();
-            var data = bestAttempts.GroupBy(a => a.Student!.University).Select(u => new { University = u.Key ?? "Unknown", Passed = u.Count(a => (decimal)a.Score / (decimal)a.Exam!.Questions.Sum(q => q.Points) * 100 >= 50), Failed = u.Count(a => (decimal)a.Score / (decimal)a.Exam!.Questions.Sum(q => q.Points) * 100 < 50) }).OrderByDescending(u => u.Passed).ToList();
-            return Json(data);
+            return View();
         }
 
         public async Task<IActionResult> EducatorPerformance()
