@@ -12,8 +12,8 @@ using onlineExamApp.Data;
 namespace onlineExamApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250819002023_intaialOne")]
-    partial class intaialOne
+    [Migration("20250819115516_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

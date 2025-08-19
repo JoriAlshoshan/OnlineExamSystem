@@ -1,38 +1,50 @@
-.account-container {
+body {
+    background-color: #f5f1e9;
+    color: #263238;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.account-container,
+.welcome-container {
     min-height: 85vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 25px 20px;
-    background-color: #f5f1e9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.account-box {
+.account-box,
+.welcome-box {
     background-color: #fff;
     border-radius: 14px;
     padding: 50px 40px;
-    width: 100%;
     max-width: 480px;
+    width: 100%;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
     text-align: left;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
-    .account-box:hover {
+    .account-box:hover,
+    .welcome-box:hover {
         box-shadow: 0 24px 55px rgba(0, 0, 0, 0.15);
     }
 
-body {
-    background-color: #f5f1e9;
+.welcome-box {
+    padding: 80px 70px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(66, 66, 66, 0.2);
+    max-width: 520px;
 }
 
-.account-title {
-    font-size: 2.6rem;
+.account-title,
+.welcome-title {
+    text-align: center;
     font-weight: 700;
     color: #37474F;
-    margin-bottom: 30px;
-    text-align: center;
 }
 
 .form-label {
@@ -46,10 +58,10 @@ body {
     border: 1.5px solid #90A4AE;
     padding: 14px 16px;
     font-size: 1.05rem;
-    transition: border-color 0.3s ease;
     box-shadow: none;
     background-color: #FAFAFA;
     color: #263238;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
     .form-control:focus {
@@ -160,33 +172,6 @@ body {
     margin-bottom: 25px;
 }
 
-.welcome-container {
-    min-height: 85vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 70px 60px;
-    background-color: #f5f1e9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-}
-
-.welcome-box {
-    background-color: #ffffff;
-    padding: 80px 70px;
-    border-radius: 20px;
-    box-shadow: 0 25px 50px rgba(66, 66, 66, 0.2);
-    max-width: 520px;
-    width: 100%;
-}
-
-.welcome-title {
-    font-size: 2.2rem;
-    color: #37474F;
-    font-weight: 800;
-    margin-bottom: 20px;
-}
-
 .welcome-subtitle {
     font-size: 1.35rem;
     color: #455A64;
@@ -242,7 +227,6 @@ body {
     color: #388E3C !important;
 }
 
-
 .navbar-nav.ms-auto {
     display: flex !important;
     align-items: center;
@@ -269,6 +253,7 @@ html[dir="rtl"] .navbar-nav.ms-auto {
 html[dir="rtl"] #sidebar.collapsed {
     transform: translateX(100%);
 }
+
 html[dir="rtl"] .toggle-btn {
     right: 20px;
     left: auto !important;
@@ -282,4 +267,81 @@ html[dir="rtl"] .form-label,
 html[dir="rtl"] .form-control,
 html[dir="rtl"] .text-danger {
     text-align: right;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e4e4e4;
+}
+
+    body.dark-mode .account-container,
+    body.dark-mode .welcome-container {
+        background-color: #1a1a1a;
+    }
+
+    body.dark-mode .account-box,
+    body.dark-mode .welcome-box {
+        background-color: #222;
+        color: #e4e4e4;
+        box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+    }
+
+    body.dark-mode .form-control {
+        background-color: #1e1e1e;
+        color: #e4e4e4;
+        border-color: #555;
+    }
+
+    body.dark-mode .btn-primary {
+        background-color: #8d7453;
+        color: #fff;
+    }
+
+    body.dark-mode .btn-success {
+        background-color: #388E3C;
+        color: #fff;
+    }
+
+    body.dark-mode .link-primary {
+        color: #81D4FA;
+    }
+
+    body.dark-mode .link-muted {
+        color: #90A4AE;
+    }
+
+    body.dark-mode .forgot-link {
+        color: #B0BEC5;
+    }
+
+    body.dark-mode .text-danger {
+        color: #EF9A9A;
+    }
+
+    body.dark-mode .text-success {
+        color: #81C784 !important;
+    }
+
+    body.dark-mode .navbar,
+    body.dark-mode footer {
+        background-color: #1f1f1f !important;
+        color: #ccc !important;
+    }
+
+    body.dark-mode #sidebar {
+        background-color: #1f1f1f;
+    }
+
+        body.dark-mode #sidebar a.nav-link {
+            color: #e4e4e4 !important;
+        }
+
+.account-box,
+.welcome-box,
+.navbar,
+footer,
+.form-control,
+#sidebar,
+body {
+    transition: all 0.3s ease;
 }
