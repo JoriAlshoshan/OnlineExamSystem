@@ -1,6 +1,8 @@
+using MailKit.Net.Smtp;
+using MailKit.Security;
 using Microsoft.Extensions.Configuration;
-using System.Net;
-using System.Net.Mail;
+using MimeKit;
+using System.Threading.Tasks;
 
 namespace onlineExamApp.Services
 {
@@ -13,33 +15,35 @@ namespace onlineExamApp.Services
             _config = config;
         }
 
-        // NOTE: This email configuration uses my personal {Mailtrap} account
-        // for testing email functionality only.
         public async Task SendEmailAsync(string toEmail, string subject, string body)
         {
-            var smtpClient = new SmtpClient(_config["EmailSettings:Host"])
+            var emailMessage = new MimeMessage();
+
+            emailMessage.From.Add(new MailboxAddress("Online Exam", _config["EmailSettings:From"]));
+            emailMessage.To.Add(MailboxAddress.Parse(toEmail));
+            emailMessage.Subject = subject;
+
+            var bodyBuilder = new BodyBuilder
             {
-                Port = int.Parse(_config["EmailSettings:Port"]),
-                Credentials = new NetworkCredential(
-                    _config["EmailSettings:Username"],
-                    _config["EmailSettings:Password"]
-                ),
-                EnableSsl = true,
+                HtmlBody = body
             };
+            emailMessage.Body = bodyBuilder.ToMessageBody();
 
-            var mailMessage = new MailMessage
-            {
-                From = new MailAddress(_config["EmailSettings:From"]),
-                Subject = subject,
-                Body = body,
-                IsBodyHtml = true,
-            };
-            mailMessage.To.Add(toEmail);
+            using var smtp = new SmtpClient();
 
-            // Send the password reset link to the user's email
-            // using my personal Mailtrap account for testing purposes only
+            await smtp.ConnectAsync(
+                _config["EmailSettings:Host"],
+                int.Parse(_config["EmailSettings:Port"]),
+                SecureSocketOptions.StartTls
+            );
 
-            await smtpClient.SendMailAsync(mailMessage);
+            await smtp.AuthenticateAsync(
+                _config["EmailSettings:Username"],
+                _config["EmailSettings:Password"]
+            );
+
+            await smtp.SendAsync(emailMessage);
+            await smtp.DisconnectAsync(true);
         }
     }
 }

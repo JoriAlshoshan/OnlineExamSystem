@@ -1,0 +1,66 @@
+﻿@model onlineExamApp.ViewModel.VerifyOtpViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = Localizer["VerifyOTP"];
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-sm p-4" style="max-width: 400px; width: 100%;">
+        <div class="card-body">
+            <h4 class="card-title text-center mb-3">@Localizer["Please enter the verification code"]</h4>
+
+            <p class="text-center text-muted small fst-italic mb-4">
+                @Localizer["EnterVerificationCode"] @Localizer["SentCodeMessage"]
+            </p>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="alert alert-danger text-center">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <div>@error.ErrorMessage</div>
+                    }
+                </div>
+            }
+
+            <form asp-action="VerifyOtp" method="post" id="otpForm" novalidate>
+                <div class="d-flex justify-content-center mb-3 gap-2">
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        <input type="text" maxlength="1" class="form-control text-center fs-5 otp-box" />
+                    }
+                </div>
+
+                <input type="hidden" name="Code" id="CodeHidden" data-val="false" />
+                <input type="hidden" name="Email" value="@Model.Email" />
+
+                <button type="submit" class="btn btn-primary w-100">@Localizer["Verify"]</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const boxes = document.querySelectorAll('.otp-box');
+        boxes.forEach((box, idx) => {
+            box.addEventListener('input', e => {
+                if (e.target.value.length === 1 && idx < boxes.length - 1) {
+                    boxes[idx + 1].focus();
+                }
+                let code = Array.from(boxes).map(b => b.value).join('');
+                document.getElementById('CodeHidden').value = code;
+            });
+
+            box.addEventListener('keydown', e => {
+                if (e.key === 'Backspace' && box.value === '' && idx > 0) {
+                    boxes[idx - 1].focus();
+                }
+            });
+        });
+    </script>
+}

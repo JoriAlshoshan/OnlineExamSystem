@@ -1,4 +1,4 @@
-@model onlineExamApp.Models.ApplicationUser
+﻿@model onlineExamApp.Models.ApplicationUser
 @inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
 
 @{
@@ -26,7 +26,7 @@
         <div class="col-md-5">
             <div class="card mb-4 shadow-sm">
                 <div class="card-body text-center">
-                    <img src="@(Model.ProfileImagePath ?? "/images/defualt_user.png")"
+                    <img src="@(Model.ProfileImagePath ?? "/images/default-profile.png")"
                          alt="profile"
                          width="120"
                          height="120"

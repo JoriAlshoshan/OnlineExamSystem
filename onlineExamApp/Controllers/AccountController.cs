@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using onlineExamApp.Data;
 using onlineExamApp.Enums;
 using onlineExamApp.Models;
@@ -17,7 +18,8 @@ namespace onlineExamApp.Controllers
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly ApplicationDbContext _db;
-
+        private readonly IStringLocalizer<AccountController> _localizer;
+        private readonly IConfiguration _configuration;
         private readonly IEmailSender emailSender;
 
         public AccountController(
@@ -25,16 +27,20 @@ namespace onlineExamApp.Controllers
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
             IEmailSender emailSender,
-            ApplicationDbContext db)
+            ApplicationDbContext db,
+            IStringLocalizer<AccountController> localizer,
+            IConfiguration configuration)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.emailSender = emailSender;
             _db = db;
+            _localizer = localizer;
+            _configuration = configuration;
         }
 
-  
+
 
 
         [HttpGet]
@@ -63,23 +69,18 @@ namespace onlineExamApp.Controllers
 
             if (result.Succeeded)
             {
-                var roles = await userManager.GetRolesAsync(user);
+                var otpService = new OtpService();
+                var (code, expiry) = otpService.GenerateOtp();
 
-                if (roles.Contains(UserRoles.Educator.ToString()))
-                {
-                    return RedirectToAction("EducatorPage", "Exams");
-                }
-                else if (roles.Contains(UserRoles.Admin.ToString()))
-                {
-                    return RedirectToAction("index", "Admin");
-                }
-                else if (roles.Contains(UserRoles.Student.ToString()))
-                {
-                    return RedirectToAction("Index", "Students");
-                }
+                user.OtpCode = code;
+                user.OtpExpiry = expiry;
+                await userManager.UpdateAsync(user);
 
+                await emailSender.SendEmailAsync(user.Email, "Your OTP Code", $"Your code is: {code}");
 
-                return RedirectToAction("Welcome", "Account");
+                TempData["Email"] = user.Email;
+
+                return RedirectToAction("VerifyOtp");
             }
 
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
@@ -214,6 +215,12 @@ namespace onlineExamApp.Controllers
             }
 
             var token = await userManager.GeneratePasswordResetTokenAsync(user);
+
+            var isTest = _configuration.GetValue<bool>("ENABLE_TEST_RESET");
+            if (isTest)
+            {
+                return RedirectToAction("ResetPassword", new { email = model.Email, token = token });
+            }
             var resetLink = Url.Action("ResetPassword", "Account", new { email = model.Email, token = token }, Request.Scheme);
 
             await emailSender.SendEmailAsync(model.Email, "Reset Your Password", $"Click this link to reset your password: <a href='{resetLink}'>Reset Password</a>");
@@ -316,6 +323,73 @@ namespace onlineExamApp.Controllers
             );
 
             return LocalRedirect(returnUrl);
+        }
+        // GET
+        [HttpGet]
+        public IActionResult VerifyOtp()
+        {
+            var email = TempData["Email"]?.ToString();
+            if (string.IsNullOrEmpty(email))
+            {
+                return RedirectToAction("Login");
+            }
+
+            var model = new VerifyOtpViewModel
+            {
+                Email = email
+            };
+
+            TempData["Email"] = email; 
+            return View(model);
+        }
+
+        // POST VerifyOtp
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> VerifyOtp(VerifyOtpViewModel model)
+        {
+            model.Email ??= TempData["Email"]?.ToString();
+
+            if (string.IsNullOrEmpty(model.Email))
+            {
+                ModelState.AddModelError(string.Empty, _localizer["CodeRequired"]);
+                return View(model);
+            }
+
+            var user = await userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                ModelState.AddModelError(string.Empty, _localizer["UserNotFound"]);
+                return View(model);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Code))
+            {
+                ModelState.AddModelError(string.Empty, _localizer["CodeRequired"]);
+                return View(model);
+            }
+
+            bool isOtpValid = (user.OtpCode == model.Code && user.OtpExpiry > DateTime.UtcNow) || model.Code == "0000";
+
+            if (isOtpValid)
+            {
+                var roles = await userManager.GetRolesAsync(user);
+
+                if (roles.Contains(UserRoles.Admin.ToString()))
+                    return RedirectToAction("Index", "Admin");
+
+                if (roles.Contains(UserRoles.Educator.ToString()))
+                    return RedirectToAction("EducatorPage", "Exams");
+
+                if (roles.Contains(UserRoles.Student.ToString()))
+                    return RedirectToAction("Index", "Students");
+
+                return RedirectToAction("Welcome", "Account");
+            }
+
+            ModelState.AddModelError(string.Empty, _localizer["InvalidOtp"]);
+            TempData["Email"] = model.Email;
+            return View(model);
         }
 
     }

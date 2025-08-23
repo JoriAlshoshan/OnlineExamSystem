@@ -1,5 +1,4 @@
 @using Microsoft.AspNetCore.Mvc.Localization
-@using Microsoft.AspNetCore.Mvc.Localization
 @inject IViewLocalizer Localizer
 @using Microsoft.AspNetCore.Identity
 @using onlineExamApp.Models
@@ -21,18 +20,18 @@
 
 <div class="welcome-container">
     <div class="welcome-box shadow-sm">
-        <h1 class="welcome-title">@Localizer["Welcome", userName]</h1>
-        <p class="welcome-subtitle">@Localizer["WelcomeSubtitle"]</p>
+        <h1 class="welcome-title">@Localizer["Welcome"]</h1>
+        <p class="welcome-subtitle text-center">@Localizer["WelcomeSubtitle"]</p>
 
         @if (!isAuthenticated)
         {
-            <p class="lead text-muted mt-4">
+            <p class="lead text-muted mt-4 text-center">
                 @Localizer["WelcomeGuest"]
             </p>
         }
         else
         {
-            <p class="text-success mt-4 fw-semibold">
+            <p class="text-success mt-4 fw-semibold text-center">
                 @Localizer["WelcomeUser"]
             </p>
         }

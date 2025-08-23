@@ -12,8 +12,8 @@ using onlineExamApp.Data;
 namespace onlineExamApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250819115516_first")]
-    partial class first
+    [Migration("20250822012114_AddOtpToUser")]
+    partial class AddOtpToUser
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -193,6 +193,12 @@ namespace onlineExamApp.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("OtpCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("OtpExpiry")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");

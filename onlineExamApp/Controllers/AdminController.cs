@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -36,39 +36,68 @@ namespace onlineExamApp.Controllers
 
         public async Task<IActionResult> ManageUsers()
         {
-            var currentUser = await _userManager.GetUserAsync(User);
-            var accessibleUsers = await _db.Users
-                .Where(u => u.University == currentUser.University)
-                .ToListAsync();
-            var userRoles = new Dictionary<string, IList<string>>();
-            foreach (var user in accessibleUsers)
-            {
-                var roles = await _userManager.GetRolesAsync(user);
-                userRoles.Add(user.Id, roles);
-            }
-            ViewData["UserRoles"] = userRoles;
-            return View(accessibleUsers);
+            var allUsers = await _db.Users.ToListAsync();
+
+            var userRoles = await (from ur in _db.UserRoles
+                                   join r in _db.Roles on ur.RoleId equals r.Id
+                                   select new { ur.UserId, r.Name })
+                                  .ToListAsync();
+
+            var rolesDict = allUsers.ToDictionary(
+                u => u.Id,
+                u => userRoles
+                        .Where(ur => ur.UserId == u.Id)
+                        .Select(ur => ur.Name)
+                        .ToList() as IList<string>
+            );
+
+            ViewData["UserRoles"] = rolesDict;
+
+            return View(allUsers);
         }
 
+
+
         [HttpGet]
-        public IActionResult CreateUser() => View(new CreateUserViewModel());
+        public IActionResult CreateUser()
+        {
+            return View(new CreateUserViewModel());
+        }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateUser(CreateUserViewModel model)
         {
-            if (!ModelState.IsValid) return View(model);
-            var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DisplayName = model.DisplayName, University = model.University };
+            model.AllRoles = new List<string> { "Admin", "Educator", "Student" }; 
+
+            if (!ModelState.IsValid)
+            {
+                return View(new CreateUserViewModel { AllRoles = model.AllRoles });
+            }
+
+            var user = new ApplicationUser
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                DisplayName = model.DisplayName,
+                University = model.University
+            };
+
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
             {
-                foreach (var error in result.Errors) ModelState.AddModelError("", error.Description);
-                model.AllRoles = new List<string> { "Admin", "Educator", "Student" };
-                return View(model);
+                foreach (var error in result.Errors)
+                    ModelState.AddModelError("", error.Description);
+                return View(new CreateUserViewModel { AllRoles = model.AllRoles });
             }
-            if (model.Roles.Any()) await _userManager.AddToRolesAsync(user, model.Roles);
+
+            if (!string.IsNullOrEmpty(model.Role))
+                await _userManager.AddToRoleAsync(user, model.Role);
+
             TempData["Success"] = "User created successfully!";
             return RedirectToAction(nameof(ManageUsers));
         }
+
 
         [HttpGet]
         public async Task<IActionResult> EditUser(string id)
@@ -123,8 +152,49 @@ namespace onlineExamApp.Controllers
 
         public async Task<IActionResult> UniversityRanking()
         {
+            var totalUniversities = await _db.StudentExamAttempts
+                .Include(a => a.Student)
+                .Select(a => a.Student.University)
+                .Distinct()
+                .CountAsync();
+
+            var attempts = await _db.StudentExamAttempts
+                .Include(a => a.Student)
+                .Include(a => a.Exam)
+                .ThenInclude(e => e.Questions)
+                .Where(a => a.SubmittedTimeUtc != null)
+                .ToListAsync();
+
+            var bestAttempts = attempts
+                .GroupBy(a => new { a.StudentId, a.ExamId })
+                .Select(g => g.OrderByDescending(a => a.Score).First())
+                .ToList();
+
+            var totalPassed = bestAttempts.Count(a =>
+                (decimal)a.Score / a.Exam.Questions.Sum(q => q.Points) * 100 >= 50);
+
+            var totalFailed = bestAttempts.Count(a =>
+                (decimal)a.Score / a.Exam.Questions.Sum(q => q.Points) * 100 < 50);
+
+            var rankingData = bestAttempts
+                .GroupBy(a => a.Student.University)
+                .Select(u => new
+                {
+                    University = u.Key ?? "Unknown",
+                    Passed = u.Count(a => (decimal)a.Score / a.Exam.Questions.Sum(q => q.Points) * 100 >= 50),
+                    Failed = u.Count(a => (decimal)a.Score / a.Exam.Questions.Sum(q => q.Points) * 100 < 50)
+                })
+                .OrderByDescending(u => u.Passed)
+                .ToList();
+
+            ViewBag.TotalUniversities = totalUniversities;
+            ViewBag.TotalPassed = totalPassed;
+            ViewBag.TotalFailed = totalFailed;
+            ViewBag.UniversityRankingData = rankingData;
+
             return View();
         }
+    
 
         public async Task<IActionResult> EducatorPerformance()
         {

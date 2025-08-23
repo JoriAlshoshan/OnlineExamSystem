@@ -63,34 +63,39 @@
                         </button>
                     </li>
                     <li class="nav-item dropdown me-3">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"> @(culture.StartsWith("ar") ? "العربية" : "English") </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
+                        <a class="nav-link dropdown-toggle fw-bold" href="#" role="button" data-bs-toggle="dropdown">
+                            @(culture.StartsWith("ar") ? "العربية" : "English")
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                             <li>
-                                <form asp-controller="Account" asp-action="SetLanguage" method="post" class="dropdown-item">
+                                <form asp-controller="Account" asp-action="SetLanguage" method="post" class="dropdown-item p-0">
                                     <input type="hidden" name="culture" value="en-US" />
                                     <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
-                                    <button type="submit" class="btn btn-link p-0 m-0">English</button>
+                                    <button type="submit" class="dropdown-item">English</button>
                                 </form>
                             </li>
                             <li>
-                                <form asp-controller="Account" asp-action="SetLanguage" method="post" class="dropdown-item">
+                                <form asp-controller="Account" asp-action="SetLanguage" method="post" class="dropdown-item p-0">
                                     <input type="hidden" name="culture" value="ar-SA" />
                                     <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
-                                    <button type="submit" class="btn btn-link p-0 m-0">العربية</button>
+                                    <button type="submit" class="dropdown-item">العربية</button>
                                 </form>
                             </li>
                         </ul>
                     </li>
+
                     @if (SignInManager.IsSignedIn(User))
                     {
-                            <li class="nav-item">
-                                <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                        <li class="nav-item">
+                            <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline m-0 p-0">
                                 @Html.AntiForgeryToken()
-                                    <button type="submit" class="btn btn-outline-danger btn-lg fw-bold px-4">
-                                        <i class="bi bi-box-arrow-right me-1"></i> @Localizer["Logout"]
-                                    </button>
-                                </form>
-                            </li>
+                                <button type="submit" class="nav-link btn p-0 text-decoration-none text-dark d-flex align-items-center logout-btn" style="font-size: 0.95rem; background: none; border: none;">
+                                    <i class="bi bi-box-arrow-right me-1"></i>
+                                    @Localizer["Logout"]
+                                </button>
+                            </form>
+                        </li>
+
                     }
                     else
                     {
@@ -115,7 +120,7 @@
             @if (user != null)
             {
                     <div class="mb-4 mt-5 text-center" style="margin-top: 150px;">
-                        <img src="@(!string.IsNullOrEmpty(user.ProfileImagePath) ? user.ProfileImagePath : "/images/defualt_user.png")"
+                    <img src="@(!string.IsNullOrEmpty(user.ProfileImagePath) ? user.ProfileImagePath : "/images/default-profile.png")"
                              alt="Profile"
                              width="60"
                              height="60"

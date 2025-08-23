@@ -5,48 +5,64 @@
     ViewData["Title"] = Localizer["AddNewUser"];
 }
 
-<head>
-    <link rel="stylesheet" href="~/css/page.css" asp-append-version="true" />
-</head>
+<h2>@Localizer["AddNewUser"]</h2>
 
-<h2 class="mb-4">@Localizer["AddNewUser"]</h2>
+<form asp-action="CreateUser" method="post" class="needs-validation" novalidate autocomplete="off">
 
-<form asp-action="CreateUser" method="post" class="needs-validation" novalidate>
     <div class="mb-3">
-        <label asp-for="DisplayName" class="form-label">@Localizer["DisplayName"]</label>
-        <input asp-for="DisplayName" class="form-control" />
+        <label asp-for="DisplayName">@Localizer["DisplayName"]</label>
+        <input asp-for="DisplayName" class="form-control" autocomplete="off" />
         <span asp-validation-for="DisplayName" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Email" class="form-label">@Localizer["Email"]</label>
-        <input asp-for="Email" class="form-control" />
+        <label asp-for="Email">@Localizer["Email"]</label>
+        <input asp-for="Email" class="form-control" autocomplete="off" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Password" class="form-label">@Localizer["Password"]</label>
-        <input asp-for="Password" type="password" class="form-control" />
+        <label asp-for="Password">@Localizer["Password"]</label>
+        <input asp-for="Password" type="password" class="form-control" autocomplete="new-password" />
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="University" class="form-label">@Localizer["University"]</label>
-        <input asp-for="University" class="form-control" />
+        <label asp-for="University">@Localizer["University"]</label>
+        <select asp-for="University" class="form-select" style="max-height: 200px; overflow-y: auto;">
+            <option value="" disabled selected>@Localizer["PleaseSelectUniversity"]</option>
+            <option value="King Saud University">King Saud University</option>
+            <option value="King Abdulaziz University">King Abdulaziz University</option>
+            <option value="King Faisal University">King Faisal University</option>
+            <option value="Um Al-Qura University">Um Al-Qura University</option>
+            <option value="Qassim University">Qassim University</option>
+            <option value="Imam Muhammad bin Saud University">Imam Muhammad bin Saud University</option>
+            <option value="Prince Sultan University">Prince Sultan University</option>
+            <option value="Taif University">Taif University</option>
+            <option value="Princess Nourah University">Princess Nourah University</option>
+            <option value="King Khalid University">King Khalid University</option>
+            <option value="Saudi Government Universities">Saudi Government Universities</option>
+            <option value="Najran University">Najran University</option>
+            <option value="Jazan University">Jazan University</option>
+            <option value="Makkah University">Makkah University</option>
+            <option value="Shaqra University">Shaqra University</option>
+            <option value="University of Dammam">University of Dammam</option>
+            <option value="Hail University">Hail University</option>
+            <option value="Unknown">Unknown</option>
+        </select>
         <span asp-validation-for="University" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
-        <label class="form-label">@Localizer["Roles"]</label>
-        <div>
+        <label asp-for="Role">@Localizer["Role"]</label>
+        <select asp-for="Role" class="form-select" required>
+            <option value="" disabled selected>@Localizer["PleaseSelectRole"]</option>
             @foreach (var role in Model.AllRoles)
             {
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="Roles" value="@role" id="role_@role" />
-                    <label class="form-check-label" for="role_@role">@role</label>
-                </div>
+                <option value="@role">@role</option>
             }
-        </div>
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">@Localizer["Create"]</button>
@@ -56,4 +72,3 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
-

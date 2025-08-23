@@ -58,8 +58,14 @@ namespace onlineExamApp.Controllers
             var user = await _userManager.GetUserAsync(User);
             if (user == null) return Challenge();
 
-            if (user.DisplayName != model.DisplayName)
+            if (string.IsNullOrWhiteSpace(model.DisplayName))
+            {
+                user.DisplayName = user.Email.Split('.')[0];
+            }
+            else
+            {
                 user.DisplayName = model.DisplayName;
+            }
 
             if (!string.IsNullOrEmpty(NewPassword))
             {
