@@ -8,11 +8,11 @@ obj/
 
 # Build results
 bin/Debug/
-!bin/Release/        # نسمح بالـ Release إذا تريدين رفعها مباشرة
+!bin/Release/      
 !bin/Release/**
 
-# Publish output (لن تحتاج إلا إذا تريدين رفع ملفات النشر مباشرة)
+# Publish output 
 publish/
 
-# Node modules إذا استعملت JS
+# Node modules 
 node_modules/
