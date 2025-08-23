@@ -1,10 +1,14 @@
 ﻿# Visual Studio temporary files
 .vs/
-bin/
 obj/
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
-appsettings.json
 
+# Build results - ignore Debug but keep Release
+bin/Debug/
+
+# Allow Release builds
+!bin/Release/
+!bin/Release/**
