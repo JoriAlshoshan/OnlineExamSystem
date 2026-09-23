@@ -51,7 +51,7 @@
 
 ## Project Goal
 
-This project was developed to practice and apply :
+This project was developed to practice and apply:
 
 * Building a web application using *ASP.NET Core MVC*.
 * Working with *Entity Framework Core*.
